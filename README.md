@@ -3,6 +3,5 @@ nemizida-os
 
 x86 operation system writen on fasm
 
-more inforamtion here
-=====================
+you can find more inforamtion on
 http://n3m1z1d4.pp.net.ua
