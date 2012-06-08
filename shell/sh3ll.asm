@@ -103,7 +103,6 @@ func_dir_search:
 
 	mov	si,ax			;результат же в ax'е
 	mov	byte[si+$b],0
-	;mov     byte[si+$c],0
 	dec	si
 	mov	byte[si],$d
 	mov	al,_printf
@@ -130,7 +129,7 @@ func_help:
 	int	0xff
 	jmp	cmd_read
 
-func_color:;в cl тextcolor, в ch bgcolor
+func_color:				;в cl тextcolor, в ch bgcolor
 	mov	si,di
 	lodsb
 	;cmp     al,0x20
@@ -195,12 +194,12 @@ strcmp_end:
 	ret
 
 hex2dec:
-	;число от 0
+					;число от 0
 	cmp	al,0x30
 	jl	not_dec_num
 	cmp	al,0x40
 	jg	not_dec_num
-	;до 9 (десятичное)
+					;до 9 (десятичное)
 	sub	al,0x30
 	ret
 not_dec_num:
@@ -218,8 +217,6 @@ zeromem:
 	pop	si
 	pop	di
 	push	si
-	;mov     si,di
-	;lodsb
 	xor	al,al
 zero_doing:
 	or	[di],al
