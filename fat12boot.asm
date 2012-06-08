@@ -52,22 +52,22 @@ start:
 	  dec	  ax
 	  mov	  sp,ax
 	  ;sti
-	  mov	  ax,3; Очистим экран
+	  mov	  ax,3			; Очистим экран
 	  int	  10h
 	  push	  n3m1z1d4
-	  push	  szn3m1z1d4-n3m1z1d4;szn3m1z1d4
+	  push	  szn3m1z1d4-n3m1z1d4	;szn3m1z1d4
 	  call	  printf
 sec_reading:
 	  push	  cx
 
-	  mov	  ah,2	; reading the sector #2
-	  mov	  al,1	; how much sectors? 1
-	  mov	  bx,kernel_begin;0x7e00 ;buffer
-	  ;mov     cx,12  ;track/sector 0/2
-	  mov	  cl,2;sector
-	  mov	  ch,0;19;track
+	  mov	  ah,2			; reading the sector #2
+	  mov	  al,1			; how much sectors? 1
+	  mov	  bx,kernel_begin	;0x7e00 ;buffer
+	  ;mov     cx,12  		;track/sector 0/2
+	  mov	  cl,2			;sector
+	  mov	  ch,0			;19;track
 	  xor	  dx,dx
-	  inc	  dh;головка 1(вторая)
+	  inc	  dh			;головка 1(вторая)
 	  int	  0x13
 
 	  pop	  cx
@@ -81,7 +81,7 @@ sec_reading:
 	  call	  printf
 	  jmp	  reboot
 _find_file:
-	  mov	  si,kernel_begin;0x7e00
+	  mov	  si,kernel_begin	;0x7e00
 	  mov	  bx,si
 _find_file_next:
 	  mov	  di,kernel_name
@@ -89,20 +89,18 @@ _find_file_next:
 	  mov	  cx,szkernel_name-kernel_name
 	  repe	  cmpsb
 	  or	  cx,cx
-	  jnz	  _find_file_not;строки неравны :(
+	  jnz	  _find_file_not	;строки неравны :(
 	  jmp	  find_kernel
 _find_file_not:
 	  add	  bx,0x20
 	  mov	  si,bx
 	  lodsb
 	  or	  al,al
-	  jz	  _error_finding;в корне ядра нема :(
+	  jz	  _error_finding	;в корне ядра нема :(
 	  jmp	  _find_file_next
 find_kernel:
 	  add	  si,$14
 	  lodsw
-	  ;shl     ax,8;в ах будет 0x200 только нахуй оно
-	  ;надо????
 	  mov	  [kernel_offset],ax
 
 	  lodsw
@@ -127,37 +125,36 @@ bez_ostatka:
 sec_reading2:
 	push	cx
 
-	mov	bx,kernel_begin;$a000 ;buffer
-	;mov     cx,12  ;track/sector 0/2
+	mov	bx,kernel_begin		;$a000 ;buffer
+	;mov     cx,12 		 	;track/sector 0/2
 	mov	ax,[kernel_offset]
 	sub	al,2
 	mov	cx,0x200
 	mul	cx
 	add	ax,0x4200
-	cwd	;необязательно... но пох, мало ли... лучше
-	div	cx;пропишем, что б потом дерьма небыло...
-	;получаем количество секторов в ax
-	mov	cx,18;дорожка
+	cwd				;необязательно... но, мало ли... лучше
+	div	cx			;пропишем, что б потом неожиданностей небыло...
+					;получаем количество секторов в ax
+	mov	cx,18			;дорожка
 	cwd
 	div	cx
-	;mov     ch,al;номер дорожки
-	;в ax номер дорожки
-	;в dx номер сектора на дорожке
+					;в ax номер дорожки
+					;в dx номер сектора на дорожке
 	or	dl,dl
 	jnz	not_sec1
 
 not_sec1:
 	inc	dl
-	mov	cl,dl;номер сектора
-	mov	dx,ax;смотрим парная ли дорожка
+	mov	cl,dl			;номер сектора
+	mov	dx,ax			;смотрим парная ли дорожка
 	push	dx
 	push	bx
 	mov	bx,2
 	cwd
 	div	bx
-	mov	ch,al;в ch номер дорожки
-	mul	bx;если парная - нужно перевернуть
-		  ;дискетук a.k.a головке один
+	mov	ch,al			;в ch номер дорожки
+	mul	bx			;если парная - нужно перевернуть
+		  			;дискетук a.k.a головке один
 	pop	bx
 	pop	dx
 	cmp	dx,1;ax;присвоить
