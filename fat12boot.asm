@@ -122,14 +122,14 @@ bez_ostatka:
 	  call	  printf
 
 	  mov	  cx,3
+;Грузим ядро
 sec_reading2:
 	push	cx
 
 	mov	bx,kernel_begin		;$a000 ;buffer
-	;mov     cx,12 		 	;track/sector 0/2
 	mov	ax,[kernel_offset]
 	sub	al,2
-	mov	cx,0x200
+	mov	cx,0x200		;track/sector 0/2
 	mul	cx
 	add	ax,0x4200
 	cwd				;необязательно... но, мало ли... лучше
@@ -239,10 +239,10 @@ printf:
 	  jnz	  line_good
 	  dec	  [line]
 	  ;прокрутка в верх на одну строку
-	  mov	  ax,0x601;Прокрутка вверх на одну строку
-	  mov	  bh,0x02   ;чорный фон, зеленые символы
-	  xor	  cx,cx   ;от 00:00
-	  mov	  dx,0x184f;24:79 (весь экран)
+	  mov	  ax,0x601			;Прокрутка вверх на одну строку
+	  mov	  bh,0x02   			;чорный фон, зеленые символы
+	  xor	  cx,cx   			;от 00:00
+	  mov	  dx,0x184f			;24:79 (весь экран)
 	  int	  0x10
 line_good:
 	  ret
