@@ -1,4 +1,4 @@
-﻿org $500
+org $500
 use16
 ;const-------------------
 _reboot 	  equ	 0
@@ -17,19 +17,19 @@ _setminmaxcolline equ	 0xb
 _cmd_size	 equ	80
 
 	 ;mov     al,_color
-	 ;mov     cx,0x0003		;Черный фон, синие символы
+	 ;mov     cx,0x0003		    ;Черный фон, синие символы
 	 ;int     0xff
 
-	mov	al,_printf		;Выводим приветствие
+	mov	al,_printf		        ;Выводим приветствие
 	mov	bx,hi
 	int	0xff
 
-					;bl=min col, bh=max col
-					;cl-min line,ch=max line
+            					;bl=min col, bh=max col
+            					;cl-min line,ch=max line
 	mov	al,_setminmaxcolline
-	xor	bx,bx			;устанавливаем границу
-	inc	bl			;которую нельзя удалить
-					;mov     cx,2479;<сторока><ряд> максимальные
+	xor	bx,bx			        ;устанавливаем границу
+	inc	bl			            ;которую нельзя удалить
+					            ;mov     cx,2479;<сторока><ряд> максимальные
 	mov	cl,79
 	mov	ch,24
 	int	0xff
