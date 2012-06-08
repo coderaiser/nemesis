@@ -17,52 +17,37 @@ _setminmaxcolline equ	 0xb
 _cmd_size	 equ	80
 
 	 ;mov     al,_color
-	 ;mov     cx,0x0003;Черный фон, синие символы
+	 ;mov     cx,0x0003		;Черный фон, синие символы
 	 ;int     0xff
-	;mov      al,_new_exec_addr
-	;mov      bx,0xb000
-	 ;xor      bx,bx
-	;int      0xff
 
-	mov	al,_printf
+	mov	al,_printf		;Выводим приветствие
 	mov	bx,hi
 	int	0xff
 
-	;bl=min col, bh=max col
-	;cl-min line,ch=max line
+					;bl=min col, bh=max col
+					;cl-min line,ch=max line
 	mov	al,_setminmaxcolline
-	xor	bx,bx;устанавливаем границу
-	inc	bl;которую нельзя удалить
-	;mov     cx,2479;<сторока><ряд> максимальные
+	xor	bx,bx			;устанавливаем границу
+	inc	bl			;которую нельзя удалить
+					;mov     cx,2479;<сторока><ряд> максимальные
 	mov	cl,79
 	mov	ch,24
 	int	0xff
 
 	jmp    _for_not_zero_mem
 cmd_read:
-
 	push	_cmd_buff
 	call	zeromem
 _for_not_zero_mem:
-
-
 	mov	al,_printf
 	mov	bx,prompt
 	int	0xff
-;_if_no_need_show_sms:
+					;_if_no_need_show_sms:
 	mov	al,_gets
 	mov	bx,_cmd_buff
 	mov	cx,_cmd_size
 	int	0xff
 
-	;cmp     byte[_cmd_buff],0
-	;jnz     all_good_read;_if_no_need_show_sms
-	;push    0x000d
-	;mov     al,_printf
-	;mov     bx,sp
-	;int     0xff
-	;pop     ax
-;        jmp     _if_no_need_show_sms
 all_good_read:
 ;юзер ввел h3lp
 	mov	di,_cmd_buff
@@ -116,7 +101,7 @@ func_dir_search:
 	or	ax,ax
 	jz     func_dir_end
 
-	mov	si,ax;результат же в ax'е
+	mov	si,ax			;результат же в ax'е
 	mov	byte[si+$b],0
 	;mov     byte[si+$c],0
 	dec	si
