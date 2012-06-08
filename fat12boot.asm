@@ -161,35 +161,23 @@ not_sec1:
 	jnz	not_twin;
 
 	jmp	twin
-not_twin:;не парное число секторов...
-	xor	dh,dh;0-левая головка
+not_twin:				;не парное число секторов...
+	xor	dh,dh			;0-левая головка
 	jmp	not_twin_ok
 twin:
-	mov	dh,1;1-ая головка
+	mov	dh,1;			1-ая головка
 not_twin_ok:
-	xor	dl,dl;грузимся с дискетки ;)!
+	xor	dl,dl			;грузимся с дискетки ;)!
 
-	mov	ah,2;_secread;reading the sector
-	mov	al,[kernel_sec_size]; how much sectors?
+	mov	ah,2			;_secread;reading the sector
+	mov	al,[kernel_sec_size]	; how much sectors?
 	int	0x13
-       ; int     0xff
 
+	jnc	 _find_kernel
 
-	 jnc	 _find_kernel
-
-	  clc
-	  pop	  cx
-	  loop	  sec_reading2
-
-
-
-	  ;mov     bx,0x200
-	  ;cwd
-	  ;div     bx
-	  ;or      dl,dl
-	  ;jz     _dl0
-	  ;inc    al
-;_dl0:     mov    [kernel_sec_size],al
+	clc
+	pop	  cx
+	loop	  sec_reading2
 
 
 ;sec_reading2:
