@@ -31,7 +31,7 @@ _backspace	 equ	0xe
 	;mov     [cs:int_old],ax
 	;mov     ax,[es:20h*4+2]
 	;mov     [cs:int_old2],ax
-;Но нам на него похуй,поскольку востанавливать не будем ;)
+;Но нам он не важен,поскольку востанавливать не будем ;)
 	mov	 ax,int_table
 	mov	 [es:0xff*4],ax
 	mov	 [es:0xff*4+2],cs
@@ -105,8 +105,6 @@ sh3ll	db	'SH3LL '
 ;=============== прерывания =) ==================
 
 int_table:
-
-
 	;cli
 	;push   ds
 	;mov    [old_ds],es
@@ -142,7 +140,7 @@ int_table:
 	cmp	al,_secwrite
 	jz	secwrite
 	iret
-reboot: ;0 перезагрузка
+reboot: 					;0 перезагрузка
 	db 0EAh
 	dw 0000h
 	dw 0FFFFh
