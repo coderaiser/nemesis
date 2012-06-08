@@ -45,8 +45,8 @@ kernel_begin	equ	0x7e00;0x1000
 
 start:
 	  ;cli
-	  xor	  ax,ax     ; initialize all the necessary
-	  mov	  ds,ax     ; registers.
+	  xor	  ax,ax     		; initialize all the necessary
+	  mov	  ds,ax    		; registers.
 	  mov	  es,ax
 	  mov	  ss,ax
 	  dec	  ax
