@@ -289,36 +289,37 @@ Posted at 11:32
 Видите как все просто =)!  Вот таблица функций, которые уже существуют
 и более-менее работают ;):
 
+```asm
+_reboot             equ   0 
+_get_char           equ   1 
+_printf             equ   2 
+_find_file	        equ   3 
+_exec               equ   4 
+_find_first	        equ   5 
+_color	            equ   6 
+_setcursor	        equ   7 
+_gets               equ   8 
+_cls                equ   9 
+_getcursor          equ   0xa 
+_setminmaxcolline   equ   0xb
 ```
-_reboot             equ  0 
-_get_char           equ  1 
-_printf             equ	 2 
-_find_file	        equ	 3 
-_exec	              equ	 4 
-_find_first	        equ	 5 
-_color	            equ	 6 
-_setcursor	        equ	 7 
-_gets	              equ	 8 
-_cls	              equ	 9 
-_getcursor	        equ	 0xa 
-_setminmaxcolline   equ	 0xb
-
 Для удобства кодинга советую создать инклуд и с этой информацие и вставить ее в
 свой сорец. Слово "equ" означает синоним(эквивалент), это значит, что для того,
 что бы вывести что-либо на экран достаточно написать:
 
-```
+```asm
 mov al,_printf 
 mov bx,data 
 int 0xff 
 data db 'h3ll0 w0rld =)!',0
+```
 
 Фасм ( а я рекомендую юзать фасм, поскольку он лучший, и именно на нем я пишу
 немизиду :)!) заменит _printf на 2. Это горазда проще чем запоминать номера,
 правда? Для остальных функций все аналогично. Вот минимальная прога, которая
 бы использовала все функции немизиды.
 
-```
+```asm
 ;start_offset equ здесь мутим адрес, скоторого будет начинатся наша прога. 
 include 'sysint.inc' обьявление констант, что бы не переписывать ;). 
 use16
@@ -382,3 +383,4 @@ mov ch,[maxline]
 int 0xff
 
 ;дальше нужно обьявить все переменные...
+```
