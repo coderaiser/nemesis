@@ -290,18 +290,18 @@ Posted at 11:32
 и более-менее работают ;):
 
 ```
-_reboot             equ  0 
-_get_char           equ  1 
-_printf             equ	 2 
-_find_file	        equ	 3 
-_exec	              equ	 4 
-_find_first	        equ	 5 
-_color	            equ	 6 
-_setcursor	        equ	 7 
-_gets	              equ	 8 
-_cls	              equ	 9 
-_getcursor	        equ	 0xa 
-_setminmaxcolline   equ	 0xb
+_reboot             equ   0 
+_get_char           equ   1 
+_printf             equ   2 
+_find_file	        equ   3 
+_exec	              equ   4 
+_find_first	        equ   5 
+_color	            equ   6 
+_setcursor	        equ   7 
+_gets	              equ   8 
+_cls	              equ   9 
+_getcursor	        equ   0xa 
+_setminmaxcolline   equ   0xb
 
 Для удобства кодинга советую создать инклуд и с этой информацие и вставить ее в
 свой сорец. Слово "equ" означает синоним(эквивалент), это значит, что для того,
