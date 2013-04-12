@@ -1,4 +1,4 @@
-org $500
+org 500h
 use16
 ;const-------------------
 _reboot 	  equ	 0

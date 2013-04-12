@@ -1,4 +1,4 @@
-﻿org 0x7c00
+org 7c00h
 use16
 boot:	  jmp	  near start
 	  line		  db	  0;nop

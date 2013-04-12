@@ -1,4 +1,4 @@
-﻿org 0x7e00;0x1000
+org 7e00h
 use16
 
 _reboot 	  equ	 0
