@@ -1,3 +1,4 @@
+#download fasm and complie nemizida sources
 wget http://flatassembler.net/fasm-1.70.03.tgz
 mv fasm*tgz fasm.tar.gz
 tar -zxf fasm.tar.gz
