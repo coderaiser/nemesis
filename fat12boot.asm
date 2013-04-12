@@ -272,7 +272,7 @@ error_krnlfile	db	'error loading kernel'
 szerror_krnlfile:; dw     $-error_krnlfile
 kernel_load	db	'kernel load successfully =)'
 szkernel_load:;   dw      $-kernel_load
-press_any_key	db	'press any key 4 r3st4rt..'
+press_any_key	db	'press any key 4 r3st4rt.'
 szpress_any_key:; dw      $-press_any_key
 kernel_name	db	'KERNEL'
 szkernel_name:;   dw      $-kernel_name
