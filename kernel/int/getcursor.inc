@@ -1,4 +1,4 @@
-﻿getcursor:;возвращает
+getcursor:;возвращает
 	;в al;столбик
 	;в ah;рядок
 	mov	al,[col]
