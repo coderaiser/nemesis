@@ -1,4 +1,4 @@
-﻿;data
+;data
 hi		  db	  'H1, 1''m sh3ll.type h3lp for ',\
 			  'm0r3 1nf0rm4t10n',$d,0
 prompt		  db	  ']',0
