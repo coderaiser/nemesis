@@ -10,4 +10,4 @@ fi
 
 fasm/fasm fat12boot.asm
 fasm/fasm kernel/kernel.asm
-fasm/fasm shell/shell.asm
+fasm/fasm shell/sh3ll.asm

@@ -1,7 +1,7 @@
-org 7e00h
+org 0x7e00;0x1000
 use16
 
-_reboot 	  equ	 0
+_reboot       equ	 0
 _get_char	  equ	 1
 _printf 	  equ	 2
 _find_file	  equ	 3
@@ -31,7 +31,7 @@ _backspace	 equ	0xe
 	;mov     [cs:int_old],ax
 	;mov     ax,[es:20h*4+2]
 	;mov     [cs:int_old2],ax
-;Но нам он не важен,поскольку востанавливать не будем ;)
+;Но нам на него похуй,поскольку востанавливать не будем ;)
 	mov	 ax,int_table
 	mov	 [es:0xff*4],ax
 	mov	 [es:0xff*4+2],cs
@@ -103,8 +103,22 @@ buf	rb	$10
 not_f	db	'sh3ll not found :(!',0
 sh3ll	db	'SH3LL '
 ;=============== прерывания =) ==================
-
+include 'int/get_char.inc'
+include 'int/printf.inc'
+include 'int/find_file.inc'
+include 'int/exec.inc'
+include 'int/color.inc'
+include 'int/setcursor.inc'
+include 'int/gets.inc'
+include 'int/cls.inc'
+include 'int/findfirst.inc'
+include 'int/getcursor.inc'
+include 'int/setminmaxcolline.inc'
+include 'int/secread.inc'
+include 'int/secwrite.inc'
 int_table:
+
+
 	;cli
 	;push   ds
 	;mov    [old_ds],es
@@ -140,25 +154,13 @@ int_table:
 	cmp	al,_secwrite
 	jz	secwrite
 	iret
-reboot: 					;0 перезагрузка
+reboot: ;0 перезагрузка
 	db 0EAh
 	dw 0000h
 	dw 0FFFFh
 	iret
 
-include 'int/get_char.inc'
-include 'int/printf.inc'
-include 'int/find_file.inc'
-include 'int/exec.inc'
-include 'int/color.inc'
-include 'int/setcursor.inc'
-include 'int/gets.inc'
-include 'int/cls.inc'
-include 'int/findfirst.inc'
-include 'int/getcursor.inc'
-include 'int/setminmaxcolline.inc'
-include 'int/secread.inc'
-include 'int/secwrite.inc'
+
 
 
 scrol:
