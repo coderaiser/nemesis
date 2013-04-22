@@ -1,4 +1,4 @@
-﻿exec:	;4 запуск програм =)
+exec:	;4 запуск програм =)
 	mov	di,bx
 	mov	cx,3
 	mov	al,_find_file
