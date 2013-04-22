@@ -1,4 +1,4 @@
-﻿gets:;в bx ложится буфер
+gets:;в bx ложится буфер
      ;в сx ложится кол-во символов
 	push	 bx
 getting_the_char:
