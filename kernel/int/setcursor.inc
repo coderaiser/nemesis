@@ -1,4 +1,4 @@
-﻿setcursor:
+setcursor:
 	;в bl;столбик
 	;в bh;рядок
 	;bx = offset
