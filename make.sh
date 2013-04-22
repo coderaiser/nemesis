@@ -23,13 +23,13 @@ if [ "$FILE_EXIST" == "" ]
     cd ..
 fi
 
-dos*/mkdosfs nemizida.img 
+#copy boot record
+dd if=fat12boot.bin of=nemizida.img
 
 #making floppy image
-dd if=/dev/zero of=nemizida.img bs=512 count=2880
+dd if=/dev/zero of=nemizida.img bs=512 count=2879 seek=1
 
-#copy boot record
-dd if=fat12boot.asm of=nemizida.img    
+dos*/mkdosfs nemizida.img
 
 FILE_EXIST=`ls -al | grep mtools`
 if [ "$FILE_EXIST" == "" ]
