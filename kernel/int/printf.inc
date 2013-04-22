@@ -1,4 +1,4 @@
-﻿printf: ;2 в bx должен быть адрес ascii строки
+printf: ;2 в bx должен быть адрес ascii строки
 	push	es
 	push	bx
 	push	cx
