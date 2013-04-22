@@ -1,4 +1,4 @@
-﻿setminmaxcolline:;bl=min col,bh-min line
+setminmaxcolline:;bl=min col,bh-min line
 		 ;cl=max col,ch=max line
 	mov	[mincol],bl
 	mov	[maxcol],cl
