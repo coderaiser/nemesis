@@ -1,4 +1,4 @@
-﻿cls:
+cls:
 	push	es
 	push	ax
 	push	di
