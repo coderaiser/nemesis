@@ -10,7 +10,7 @@ or watch [demo](http://nemizida.cloudfoundry.com "Nemizida")
 
 Build Image
 ===========
-You can build image or just downlod it.
+You can build image or just [downlod](//github.com/coderaiser/nemizida-archive/raw/master/nemizida-v0.1.0.img.gz "download ang unpack") it.
 
     git clone http://coderaiser/nemizida
     cd nemizida
