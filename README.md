@@ -7,3 +7,17 @@ Nemizida v0.1.0
 Nemizida x86 operation system writen on fasm.
 You can find more [inforamation](http://n3m1z1d4.pp.net.ua "information")
 or watch [demo](http://nemizida.cloudfoundry.com "Nemizida")
+
+Build Image
+===========
+You can build image or just downlod it.
+
+    git clone http://coderaiser/nemizida
+    cd nemizida
+    scripts/make.sh
+
+Making script will downlo all needed programs and create image.
+You can clean things up by command.
+    
+    scripts/clean.sh
+    
