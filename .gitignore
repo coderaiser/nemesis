@@ -1,0 +1,9 @@
+.c9revisions/
+
+dosfstools*
+fasm*
+mtools*
+
+*.bin
+
+nemizida.img
