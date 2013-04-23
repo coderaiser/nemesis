@@ -87,6 +87,6 @@ $mcopy -i nemizida.img kernel/kernel.bin ::/
 $mcopy -i nemizida.img shell/sh3ll.bin ::/ 
 echo '----------------------------------'
 #write boot record
-$node scripts/write_boot_sector.js
+$node scripts/bootwrite.js
 
 echo "Image \"nemizida.img\" created."
