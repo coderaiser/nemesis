@@ -89,6 +89,6 @@ echo '----------------------------------'
 #write boot record
 $node scripts/bootwrite.js
 
-dd if=/dev/zero of=nemizida.img bs=512 count=39
+#dd if=/dev/zero of=nemizida.img bs=512 count=39
 
 echo "Image \"nemizida.img\" created."

@@ -1,19 +1,19 @@
 org 7c00h
 use16
-boot:	  jmp	  near start
-	  line		  db	  0;nop
+boot:   jmp     short start
+line    db      90h
 
 ;------------------------------------------;
 ;  Standard BIOS Parameter Block, "BPB".   ;
 ;------------------------------------------;
-	  bpbOEM	  db  'n3m1z1d4';
-	  bpbSectSize	  dw  512
-	  bpbClustSize	  db  1
-	  bpbReservedSec  dw  1
-	  bpbFats	  db  2
-	  bpbRootSize	  dw  224
-	  bpbTotalSect	  dw  2880
-	  bpbMedia	  db  240
+        bpbOEM              db  'n3m1z1d4';
+        bpbSectSize         dw  512
+        bpbClustSize        db  1
+        bpbReservedSec      dw  1
+        bpbFats             db  2
+        bpbRootSize         dw  224
+        bpbTotalSect        dw  2880
+        bpbMedia            db  240
 	  bpbFatSize	  dw  9
 	  bpbTrackSect	  dw  18
 	  bpbHeads	  dw  2
@@ -45,8 +45,8 @@ kernel_begin	equ	0x7e00;0x1000
 
 start:
 	  ;cli
-	  xor	  ax,ax     		; initialize all the necessary
-	  mov	  ds,ax    		; registers.
+	  xor	  ax,ax         ; initialize all the necessary
+	  mov	  ds,ax         ; registers.
 	  mov	  es,ax
 	  mov	  ss,ax
 	  dec	  ax
