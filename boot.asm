@@ -55,8 +55,8 @@ start:
     mov     ax, 3   ; Очистим экран
     int     10h
     
-    push    loaderName
-    push    loaderNameEnd - loaderName
+    push    loader_nameEnd
+    push    szloader_name - loader_name
     call    printf
 sec_reading:
     push    cx
@@ -74,23 +74,23 @@ sec_reading:
     jnc     _find_file
     
     clc
-    loop	  sec_reading
+    loop    sec_reading
     
-    push	  error_reading
-    push	  szerror_reading-error_reading
-    call	  printf
-    jmp	  reboot
+    push    error_reading
+    push    szerror_reading - error_reading
+    call    printf
+    jmp     reboot
 _find_file:
-	  mov	  si,kernel_begin	;0x7e00
-	  mov	  bx,si
+    mov     si, kernel_begin	;0x7e00
+    mov     bx, si
 _find_file_next:
-	  mov	  di,kernel_name
-	  mov	  si,bx
-	  mov	  cx,szkernel_name-kernel_name
-	  repe	  cmpsb
-	  or	  cx,cx
-	  jnz	  _find_file_not	;строки неравны :(
-	  jmp	  find_kernel
+    mov     di, kernel_name
+    mov     si, bx
+    mov     cx, szkernel_name-kernel_name
+    repe    cmpsb
+    or      cx, cx
+    jnz     _find_file_not	;строки неравны :(
+    jmp     find_kernel
 _find_file_not:
 	  add	  bx,0x20
 	  mov	  si,bx
@@ -241,8 +241,8 @@ reboot:
 		dw 0FFFFh
 ;======================ПЕРЕЗАГРУЗКА====================
 
-loaderName          db  'n3m1z1d4 loader'
-loaderNameEnd:
+loader_name          db  'n3m1z1d4 loader'
+szloader_name:
 error_reading       db  'error reading'
 szerror_reading:
 kernel_fined        db  'kernel find =)'
