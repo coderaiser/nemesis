@@ -55,7 +55,7 @@ start:
     mov     ax, 3   ; Очистим экран
     int     10h
     
-    push    loader_nameEnd
+    push    loader_name
     push    szloader_name - loader_name
     call    printf
 sec_reading:
