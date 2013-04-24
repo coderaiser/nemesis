@@ -37,7 +37,7 @@ line    db      90h
     bpbVolumeLabel      db  'BOOT FLOPPY'
     bpbFileSystem       db  'FAT12   '
         
-kernel_begin	equ	0x7e00
+kernel_begin    equ	0x7e00
 
 ;----------------------------------------;
 ;   starting point of bootsector code    ;
@@ -60,27 +60,26 @@ start:
     call    printf
 sec_reading:
     push    cx
-
-	  mov	  ah,2			    ; reading the sector #2
-	  mov	  al,1			    ; how much sectors? 1
-	  mov	  bx,kernel_begin	;0x7e00 ;buffer
-	  ;mov     cx,12  		;track/sector 0/2
-	  mov	  cl,2			;sector
-	  mov	  ch,0			;19;track
-	  xor	  dx,dx
-	  inc	  dh			;головка 1(вторая)
-	  int	  0x13
-
-	  pop	  cx
-	  jnc	  _find_file
-
-	  clc
-	  loop	  sec_reading
-
-	  push	  error_reading
-	  push	  szerror_reading-error_reading
-	  call	  printf
-	  jmp	  reboot
+    
+    mov     ah, 2               ; reading the sector #2
+    mov     al, 1               ; how much sectors? 1
+    mov     bx, kernel_begin    ; buffer
+    mov     cl, 2               ; sector
+    mov     ch, 0               ; track
+    xor     dx, dx
+    inc     dh                  ;головка 1(вторая)
+    int     13h
+    
+    pop     cx
+    jnc     _find_file
+    
+    clc
+    loop	  sec_reading
+    
+    push	  error_reading
+    push	  szerror_reading-error_reading
+    call	  printf
+    jmp	  reboot
 _find_file:
 	  mov	  si,kernel_begin	;0x7e00
 	  mov	  bx,si
