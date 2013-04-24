@@ -3,7 +3,7 @@
     
     var fs          = require('fs'),
         
-        BOOT_FILE   = 'fat12boot.bin',
+        BOOT_FILE   = 'boot.bin',
         IMAGE_FILE  = 'nemizida.img',
         
         SUCCESS_MSG = 'Boot Record writed successfully.',

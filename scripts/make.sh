@@ -74,7 +74,7 @@ if which node
 
 #compile
 echo '>compile fat12boot'
-$fasm fat12boot.asm
+$fasm boot.asm
 echo '>compile kernel'
 $fasm kernel/kernel.asm
 echo '>compile shell'
