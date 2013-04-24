@@ -14,29 +14,29 @@ line    db      90h
         bpbRootSize         dw  224
         bpbTotalSect        dw  2880
         bpbMedia            db  240
-	  bpbFatSize	  dw  9
-	  bpbTrackSect	  dw  18
-	  bpbHeads	  dw  2
-	  bpbHiddenSect   dd  0
-	  ;bpbLargeSect    dd  0\ забьем :)/ нема места...
-
-	  ;мои переменные ;)!
-	  kernel_offset   dw	  0
-	  kernel_size	  dw	  0
-	  ;Да! Я жадный :D!..
-
+        bpbFatSize          dw  9
+        bpbTrackSect        dw  18
+        bpbHeads            dw  2
+        bpbHiddenSect       dd  0
+        ;bpbLargeSect       dd  0\ забьем :)/ нема места...
+        
+        ;мои переменные ;)!
+        kernel_offset       dw  0
+        kernel_size         dw  0
+        ;Да! Я жадный :D!..
+    
      ;---------------------------------;
      ;  extended BPB for FAT12/FAT16   ;
      ;---------------------------------;
-	  bpbDriveNo	  db  0
-
-
-	  kernel_sec_size db	  0;bpbReserved     db  0
-
-	  bpbSignature	  db  41		      ; 0 = nothing more. 41 = three more (below)..
-	  bpbID 	  dd  1
-	  bpbVolumeLabel  db  'BOOT FLOPPY'
-	  bpbFileSystem   db  'FAT12   '
+        bpbDriveNo            db  0
+        
+        
+        kernel_sec_size     db  0;bpbReserved     db  0
+        
+        bpbSignature        db  41		      ; 0 = nothing more. 41 = three more (below)..
+        bpbID               dd  1
+        bpbVolumeLabel      db  'BOOT FLOPPY'
+        bpbFileSystem       db  'FAT12   '
 
 kernel_begin	equ	0x7e00;0x1000
 ;----------------------------------------;
