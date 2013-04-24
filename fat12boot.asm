@@ -6,62 +6,63 @@ line    db      90h
 ;------------------------------------------;
 ;  Standard BIOS Parameter Block, "BPB".   ;
 ;------------------------------------------;
-        bpbOEM              db  'n3m1z1d4';
-        bpbSectSize         dw  512
-        bpbClustSize        db  1
-        bpbReservedSec      dw  1
-        bpbFats             db  2
-        bpbRootSize         dw  224
-        bpbTotalSect        dw  2880
-        bpbMedia            db  240
-        bpbFatSize          dw  9
-        bpbTrackSect        dw  18
-        bpbHeads            dw  2
-        bpbHiddenSect       dd  0
-        ;bpbLargeSect       dd  0\ забьем :)/ нема места...
-        
-        ;мои переменные ;)!
-        kernel_offset       dw  0
-        kernel_size         dw  0
-        ;Да! Я жадный :D!..
+    bpbOEM              db  'nemizida';
+    bpbSectSize         dw  512
+    bpbClustSize        db  1
+    bpbReservedSec      dw  1
+    bpbFats             db  2
+    bpbRootSize         dw  224
+    bpbTotalSect        dw  2880
+    bpbMedia            db  240
+    bpbFatSize          dw  9
+    bpbTrackSect        dw  18
+    bpbHeads            dw  2
+    bpbHiddenSect       dd  0
     
-     ;---------------------------------;
-     ;  extended BPB for FAT12/FAT16   ;
-     ;---------------------------------;
-        bpbDriveNo            db  0
-        
-        
-        kernel_sec_size     db  0;bpbReserved     db  0
-        
-        bpbSignature        db  41		      ; 0 = nothing more. 41 = three more (below)..
-        bpbID               dd  1
-        bpbVolumeLabel      db  'BOOT FLOPPY'
-        bpbFileSystem       db  'FAT12   '
+    ;bpbLargeSect       dd  0
+    
+    kernel_offset       dw  0
+    kernel_size         dw  0
 
-kernel_begin	equ	0x7e00;0x1000
+;---------------------------------;
+;  extended BPB for FAT12/FAT16   ;
+;---------------------------------;
+    bpbDriveNo          db  0
+    
+    ;bpbReserved        db  0
+    kernel_sec_size     db  0
+    
+    bpbSignature        db  41      ; 0 = nothing more. 41 = three more (below)..
+    bpbID               dd  1
+    bpbVolumeLabel      db  'BOOT FLOPPY'
+    bpbFileSystem       db  'FAT12   '
+        
+kernel_begin	equ	0x7e00
+
 ;----------------------------------------;
 ;   starting point of bootsector code    ;
 ;----------------------------------------;
 
 start:
-	  ;cli
-	  xor	  ax,ax         ; initialize all the necessary
-	  mov	  ds,ax         ; registers.
-	  mov	  es,ax
-	  mov	  ss,ax
-	  dec	  ax
-	  mov	  sp,ax
-	  ;sti
-	  mov	  ax,3			; Очистим экран
-	  int	  10h
-	  push	  n3m1z1d4
-	  push	  szn3m1z1d4-n3m1z1d4	;szn3m1z1d4
-	  call	  printf
+    xor     ax, ax   ; initialize all the necessary
+    mov     ds, ax   ; registers.
+    mov     es, ax
+    mov     ss, ax
+    
+    dec     ax
+    mov     sp, ax
+    
+    mov     ax, 3   ; Очистим экран
+    int     10h
+    
+    push    loaderName
+    push    loaderNameEnd - loaderName
+    call    printf
 sec_reading:
-	  push	  cx
+    push    cx
 
-	  mov	  ah,2			; reading the sector #2
-	  mov	  al,1			; how much sectors? 1
+	  mov	  ah,2			    ; reading the sector #2
+	  mov	  al,1			    ; how much sectors? 1
 	  mov	  bx,kernel_begin	;0x7e00 ;buffer
 	  ;mov     cx,12  		;track/sector 0/2
 	  mov	  cl,2			;sector
@@ -179,26 +180,6 @@ not_twin_ok:
 	pop	  cx
 	loop	  sec_reading2
 
-
-;sec_reading2:
-;Грузим ядро
-;          push    cx
-;          mov     ah,2  ; reading the sector #2
-;          mov     al,[kernel_sec_size];1  ; how much sectors? 1
-;          mov     bx,kernel_begin;0x7e00 ;buffer
-;          ;mov     cx,12  ;track/sector 0/2
-;          mov     cl,16;sector
-;          mov     ch,0;19;track
-;          xor     dx,dx
-;          inc     dh;головка 1(вторая)
-;          int     0x13
-
-;          pop     cx
-;          jnc     _find_kernel
-
-;          clc
-;          loop    sec_reading2
-
 	  push	  error_krnlfile
 	  push	  word szerror_krnlfile-error_krnlfile
 	  call	  printf
@@ -239,11 +220,12 @@ printf:
 	  jnz	  line_good
 	  dec	  [line]
 	  ;прокрутка в верх на одну строку
-	  mov	  ax,0x601			;Прокрутка вверх на одну строку
+	  
+      mov	  ax,0x601			;Прокрутка вверх на одну строку
 	  mov	  bh,0x02   			;чорный фон, зеленые символы
 	  xor	  cx,cx   			;от 00:00
 	  mov	  dx,0x184f			;24:79 (весь экран)
-	  int	  0x10
+	  int	  10h
 line_good:
 	  ret
 reboot:
@@ -252,7 +234,7 @@ reboot:
 	  call	  printf
 
 	  xor	  ax,ax
-	  int	  $16;ждем нажатия на клаву ;)
+	  int	  16h;ждем нажатия на клаву ;)
 
 ;======================ПЕРЕЗАГРУЗКА====================
 		db 0EAh
@@ -260,23 +242,22 @@ reboot:
 		dw 0FFFFh
 ;======================ПЕРЕЗАГРУЗКА====================
 
-n3m1z1d4	db	'n3m1z1d4 loader'
-szn3m1z1d4:;      equ      szn3m1z1d4-n3m1z1d4
-error_reading	db	'error reading'
-szerror_reading:; dw      $-error_reading
-kernel_fined	db	'kernel find =)'
-szkernel_fined:;  dw      $-kernel_fined
-error_finding	db	'error finding the kernel'
-szerror_finding:; dw      $-error_finding
-error_krnlfile	db	'error loading kernel'
-szerror_krnlfile:; dw     $-error_krnlfile
-kernel_load	db	'kernel load successfully =)'
-szkernel_load:;   dw      $-kernel_load
-press_any_key	db	'press any key 4 r3st4rt.'
-szpress_any_key:; dw      $-press_any_key
-kernel_name	db	'KERNEL'
-szkernel_name:;   dw      $-kernel_name
-;kernel_ext      db      'BIN'
+loaderName          db  'n3m1z1d4 loader'
+loaderNameEnd:
+error_reading       db  'error reading'
+szerror_reading:
+kernel_fined        db  'kernel find =)'
+szkernel_fined:
+error_finding       db  'error finding the kernel'
+szerror_finding:
+error_krnlfile      db  'error loading kernel'
+szerror_krnlfile:
+kernel_load         db  'kernel load successfully =)'
+szkernel_load:
+press_any_key	    db	'press any key 4 r3st4rt.'
+szpress_any_key:
+kernel_name         db  'KERNEL'
+szkernel_name:
 
 		rb	0x200-($-boot)-2
 		db	0x55,0xaa

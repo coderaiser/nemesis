@@ -21,6 +21,7 @@ echo '----------------------------------'
 if which mkdosfs
     then
         mkdosfs="mkdosfs"
+        dosfsck="dosfsck"
     else
         FILE_EXIST=`ls -al | grep dosfstools`
         if [ "$FILE_EXIST" == "" ]
@@ -32,6 +33,7 @@ if which mkdosfs
             cd ..
         fi
         mkdosfs="dos*/mkdosfs"
+        dosfsck="dos*/dosfsck"
     fi
 
 echo '>check mcopy'
@@ -89,6 +91,9 @@ echo '----------------------------------'
 #write boot record
 $node scripts/bootwrite.js
 
-#dd if=/dev/zero of=nemizida.img bs=512 count=39
+dd if=/dev/zero of=nemizida_small.img bs=512 count=39
+
+#check result image
+$dosfsck nemizida.img
 
 echo "Image \"nemizida.img\" created."
