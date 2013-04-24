@@ -1,3 +1,5 @@
 2012.*.*, v0.2.0
 
 * Renamed fat12boot.asm -> boot.asm.
+
+* Changed commands to simple not l33t style.
