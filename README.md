@@ -16,7 +16,7 @@ You can build image or just [downlod](//github.com/coderaiser/nemizida-archive/r
     cd nemizida
     scripts/make.sh
 
-Making script will downlo all needed programs and create image.
+Making script will download all needed programs and create image.
 You can clean things up by command.
     
     scripts/clean.sh
