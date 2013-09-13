@@ -1,0 +1,25 @@
+#screenVGA{
+    background: black;
+}
+
+.main, .controls, #screenVGA{
+    margin: 10px;
+}
+
+.ribbon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+.loading{
+    background:url(../img/spinner.gif);
+    display:inline-block;
+    height: 16px;
+    margin-left:10px;
+    width: 16px;
+}
+
+::-moz-selection { background: #b3d4fc; color: #fff; text-shadow: none; }
+::selection { background: #b3d4fc; color: #fff; text-shadow: none; }
