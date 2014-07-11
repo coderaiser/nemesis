@@ -10,8 +10,8 @@
   },
   "scripts": {
     "test": "npm run make",
-    "make": "sh ./scripts/make.sh",
-    "clean": "sh ./scripts/clean.sh"
+    "make": "sh ./scripts/make",
+    "clean": "sh ./scripts/clean"
   },
   "node": "0.6.17",
   "subdomain": "nemizida"
