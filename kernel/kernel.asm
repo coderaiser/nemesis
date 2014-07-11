@@ -98,10 +98,11 @@ _backspace          equ    0xe
     ;mov     cx,10
     ;int     0xff
     jmp    $
-hi    db    'h3ll0 fr0m n3m1z1d4 =)!!!',$d,0
-buf    rb    $10
-not_f    db    'sh3ll not found :(!',0
-sh3ll    db    'SH3LL '
+
+hi      db    'hello from Nemizida =)!!!',$d,0
+buf     rb    $10
+not_f   db    'sh3ll not found :(!',0
+sh3ll   db    'SH3LL '
 ;=============== прерывания =) ==================
 include 'int/get_char.inc'
 include 'int/printf.inc'
@@ -198,21 +199,21 @@ scrol:
 ;---------------------------------------------
 ;=========================================================
 ;================= Данные ==========================
-line        db    3
-minline     db    0
-maxline     db    24
-col        db    0
-mincol        db    0
-maxcol        db    79
-textcolor    db    2
-bgcolor     db    0
-file_offset    dw    0
-file_size    dw    0
-file_sec_size    db    0
-error_reading    db    'error reading the file o_O',0
-exec_addr    dw    $500
-old_ds        dw    0
-old_es        dw    0
+line            db    3
+minline         db    0
+maxline         db    24
+col             db    0
+mincol          db    0
+maxcol          db    79
+textcolor       db    2
+bgcolor         db    0
+file_offset     dw    0
+file_size       dw    0
+file_sec_size   db    0
+error_reading   db    'error reading the file o_O',0
+exec_addr       dw    $500
+old_ds          dw    0
+old_es          dw    0
 
 ;ascii_pic db '      __________',$d
 ;          db   ".'`   |     |`'.",$d
