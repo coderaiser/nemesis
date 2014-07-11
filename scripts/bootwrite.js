@@ -12,16 +12,21 @@
         POSITION    = 0;
     
     
-    fs.readFile(BOOT_FILE, function(pError, pData){
-        if( !show(pError) )
-            fs.open(IMAGE_FILE, 'r+', function(pError, pFD){
-                show(pError) || write(pFD, pData);
+    fs.readFile(BOOT_FILE, function(error, data) {
+        if (error)
+            show(error);
+        else
+            fs.open(IMAGE_FILE, 'r+', function(error, fd) {
+                if (error)
+                    show(error);
+                else
+                    write(fd, data);
             });
     });
     
-    function write(pFD, pData){
-        fs.write(pFD, pData, OFFSET, pData.length, POSITION, function(pError){
-            show(pError || SUCCESS_MSG);
+    function write(fd, data){
+        fs.write(fd, data, OFFSET, data.length, POSITION, function(error) {
+            show(error || SUCCESS_MSG);
         });
     }
     
