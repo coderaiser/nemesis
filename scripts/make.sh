@@ -91,7 +91,7 @@ echo '----------------------------------'
 #write boot record
 $node scripts/bootwrite.js
 
-dd if=/dev/zero of=nemizida_small.img bs=512 count=39
+dd if=nemizida.img of=nemizida_small.img bs=512 count=39
 
 #check result image
 $dosfsck nemizida.img
