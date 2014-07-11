@@ -31,13 +31,10 @@ var $;
                 $loading[0].classList.add('hidden');
                 
                 var emu = new Jemul8( {
-                      'floppy0.driveType':
-                          'FDD_350HD'
-                      , 'floppy0.diskType':
-                          'FLOPPY_1_44'
-                      , 'floppy0.path':
-                          'nemizida_small.img'
-                      , 'floppy0.status': true
+                      'floppy0.driveType'   : 'FDD_350HD',
+                      'floppy0.diskType'    : 'FLOPPY_1_44',
+                      'floppy0.path'        : 'nemizida_small.img',
+                      'floppy0.status'      : true
                 } );
                   
                 canvasVGAPlugin.applyTo(emu);
