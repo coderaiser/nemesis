@@ -1,4 +1,4 @@
-Nemizida v0.1.0
+Nemizida v0.2.0
 ===========
 [![Flattr][FlattrIMGURL]][FlattrURL]
 [FlattrIMGURL]:             http://api.flattr.com/button/flattr-badge-large.png
