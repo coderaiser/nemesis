@@ -19,9 +19,9 @@ var $;
         $loading[0].classList.remove('hidden');
         
         require([
-              "js/core/classes/emulator"
-              , "js/plugins/std.canvas.vga"
-              , "js/plugins/std.keyboard"
+              'js/core/classes/emulator'
+              , 'js/plugins/std.canvas.vga'
+              , 'js/plugins/std.keyboard'
           ], function (
               Jemul8
               , canvasVGAPlugin
@@ -31,19 +31,19 @@ var $;
                 $loading[0].classList.add('hidden');
                 
                 var emu = new Jemul8( {
-                      "floppy0.driveType":
-                          "FDD_350HD"
-                      , "floppy0.diskType":
-                          "FLOPPY_1_44"
-                      , "floppy0.path":
-                          "nemizida_small.img"
-                      , "floppy0.status": true
+                      'floppy0.driveType':
+                          'FDD_350HD'
+                      , 'floppy0.diskType':
+                          'FLOPPY_1_44'
+                      , 'floppy0.path':
+                          'nemizida_small.img'
+                      , 'floppy0.status': true
                 } );
                   
                 canvasVGAPlugin.applyTo(emu);
                 keyboardPlugin.applyTo(emu);
                  
-                emu.init(function () {                  
+                emu.init(function () {
                     $reset.click(function ( evt ) {
                         emu.reset();
                         emu.run();
