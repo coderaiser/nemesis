@@ -73,7 +73,7 @@ if which node
     fi
 
 #compile
-echo '>compile fat12boot'
+echo '>compile boot.asm'
 $fasm boot.asm
 echo '>compile kernel'
 $fasm kernel/kernel.asm
@@ -91,7 +91,7 @@ echo '----------------------------------'
 #write boot record
 $node scripts/bootwrite.js
 
-dd if=nemizida.img of=nemizida_small.img bs=512 count=39
+dd if=nemizida.img of=nemizida_small.img bs=512 count=40
 
 #check result image
 $dosfsck nemizida.img
