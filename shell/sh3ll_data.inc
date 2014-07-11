@@ -1,4 +1,4 @@
-hi                  db      'H1, 1''m sh3ll.type h3lp for ',\
+hi                  db      'Hi, I''m Shell. Type help for ',\
                             'more information', $d, 0
 prompt              db      ']', 0
 _cmd_buff           rb      _cmd_size + 1
@@ -18,7 +18,7 @@ cmd_list            db      $d, 'Help? Why not o_O?',$d,\
                             'color  - change text and ',\
                             'background color',$d,$d,0
 
-color_help          db	    $d,'type: c0l0r bt',$d,\
+color_help          db      $d,'type: color bt',$d,\
                             'where b - it''s bgcolor and ',\
                             't - text color',$d,\
                             'one of:',$d,\
