@@ -1,7 +1,7 @@
 org 7c00h
 use16
 boot:   jmp     short start
-line    db      90h
+line    db      0
 
 ;------------------------------------------;
 ;  Standard BIOS Parameter Block, "BPB".   ;
@@ -58,6 +58,7 @@ start:
     push    loader_name
     push    szloader_name - loader_name
     call    printf
+    
 sec_reading:
     push    cx
     
@@ -176,55 +177,55 @@ not_twin_ok:
     jnc     _find_kernel
 
     clc
-    pop      cx
-    loop      sec_reading2
+    pop     cx
+    loop    sec_reading2
 
-      push      error_krnlfile
-      push      word szerror_krnlfile-error_krnlfile
-      call      printf
-
-      jmp      reboot
+    push    error_krnlfile
+    push    word szerror_krnlfile-error_krnlfile
+    call    printf
+    
+    jmp     reboot
 
 _find_kernel:
-       push   kernel_load
-       push   szkernel_load-kernel_load
-       call   printf
-;          jmp    $
-       jmp      kernel_begin;0x7e00
+    push    kernel_load
+    push    szkernel_load-kernel_load
+    call    printf
+    
+    jmp     kernel_begin
 
 
 _error_finding:
-      push     error_finding
-      push     szerror_finding-error_finding
-      call     printf
-      jmp     reboot
-;Слежебные функци o_O
+      push      error_finding
+      push      szerror_finding-error_finding
+      call      printf
+      jmp       reboot
+;Служебные функци o_O
 printf:
-      ;mov     bp,n3m1z1d4 ; Print loading message.
-      pop      si
-      pop      cx
-      pop      bp
+      pop       si
+      pop       cx
+      pop       bp
       push      si
 
       xor      bh,bh
       mov      ax, $1301   ;13(num of func),1 param
+      ;al = 1  Assign all characters the attribute in BL update cursor
       mov      bl,2;green color ;)
-      ;mov     cx,8;word[szn3m1z1d4]
-      ;xor     dl,dl
       cwd
+      
       mov      dh,[line]
       int      0x10
       inc      [line]
+      
       cmp      [line],24
       jnz      line_good
       dec      [line]
       ;прокрутка в верх на одну строку
       
-      mov      ax,0x601            ;Прокрутка вверх на одну строку
-      mov      bh,0x02               ;чорный фон, зеленые символы
-      xor      cx,cx               ;от 00:00
-      mov      dx,0x184f            ;24:79 (весь экран)
-      int      10h
+      mov      ax,0x601         ;Прокрутка вверх на одну строку
+      mov      bh,0x02          ;чорный фон, зеленые символы
+      xor      cx,cx            ;от 00:00
+      mov      dx,0x184f        ;24:79 (весь экран)
+      int      0x10
 line_good:
       ret
 reboot:
@@ -241,19 +242,19 @@ reboot:
         dw 0FFFFh
 ;======================ПЕРЕЗАГРУЗКА====================
 
-loader_name          db  'n3m1z1d4 loader'
+loader_name         db  'Nemizida loader'
 szloader_name:
 error_reading       db  'error reading'
 szerror_reading:
-kernel_fined        db  'kernel find =)'
+kernel_fined        db  'kernel find'
 szkernel_fined:
 error_finding       db  'error finding the kernel'
 szerror_finding:
 error_krnlfile      db  'error loading kernel'
 szerror_krnlfile:
-kernel_load         db  'kernel load successfully =)'
+kernel_load         db  'kernel load successfully'
 szkernel_load:
-press_any_key        db    'press any key 4 r3st4rt.'
+press_any_key       db  'press any key 4 restart'
 szpress_any_key:
 kernel_name         db  'KERNEL'
 szkernel_name:
