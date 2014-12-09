@@ -10,7 +10,7 @@ or try [online](http://coderaiser.github.io/nemesis "nemesis")
 
 Build Image
 ===========
-You can build image or just [downlod](//github.com/coderaiser/nemesis-archive/raw/master/nemesis-v0.1.0.img.gz "download ang unpack") it.
+You can build image or just [downlod](//github.com/coderaiser/nemesis-archive/raw/master/nemizida-v0.1.0.img.gz "download ang unpack") it.
 
     git clone git://github.com/coderaiser/nemesis.git
     cd nemesis
