@@ -1,4 +1,4 @@
-Nemesis v0.2.0
+Nemesis
 ===========
 [![Flattr][FlattrIMGURL]][FlattrURL]
 [FlattrIMGURL]:             http://api.flattr.com/button/flattr-badge-large.png
