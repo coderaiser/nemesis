@@ -1,19 +1,19 @@
-Nemizida v0.2.0
+Nemesis v0.2.0
 ===========
 [![Flattr][FlattrIMGURL]][FlattrURL]
 [FlattrIMGURL]:             http://api.flattr.com/button/flattr-badge-large.png
-[FlattrURL]:                https://flattr.com/submit/auto?user_id=coderaiser&url=github.com/coderaiser/nemizida&title=nemizida&language=&tags=github&category=software
+[FlattrURL]:                https://flattr.com/submit/auto?user_id=coderaiser&url=github.com/coderaiser/nemesis&title=nemesis&language=&tags=github&category=software
 
-Nemizida x86 operation system writen on fasm.
+nemesis x86 operation system writen on fasm.
 You can find more [inforamation](http://n3m1z1d4.pp.net.ua "information")
-or try [online](http://coderaiser.github.io/nemizida "Nemizida")
+or try [online](http://coderaiser.github.io/nemesis "nemesis")
 
 Build Image
 ===========
-You can build image or just [downlod](//github.com/coderaiser/nemizida-archive/raw/master/nemizida-v0.1.0.img.gz "download ang unpack") it.
+You can build image or just [downlod](//github.com/coderaiser/nemesis-archive/raw/master/nemesis-v0.1.0.img.gz "download ang unpack") it.
 
-    git clone git://github.com/coderaiser/nemizida.git
-    cd nemizida
+    git clone git://github.com/coderaiser/nemesis.git
+    cd nemesis
     scripts/make.sh
 
 Making script will download all needed programs and create image.
