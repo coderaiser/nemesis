@@ -242,7 +242,7 @@ reboot:
         dw 0FFFFh
 ;======================ПЕРЕЗАГРУЗКА====================
 
-loader_name         db  'Nemizida loader'
+loader_name         db  'Nemesis loader'
 szloader_name:
 error_reading       db  'error reading'
 szerror_reading:
