@@ -1,17 +1,17 @@
 {
-  "name": "nemizida",
+  "name": "nemesis",
   "version": "0.2.0",
   "author": "coderaiser <mnemonic.enemy@gmail.com> (https://github.com/coderaiser)",
   "description": "OS",
-  "homepage": "https://github.com/coderaiser/nemizida",
+  "homepage": "https://github.com/coderaiser/nemesis",
   "repository": {
     "type": "git",
-    "url": "git://github.com/coderaiser/nemizida.git"
+    "url": "git://github.com/coderaiser/nemesis.git"
   },
   "scripts": {
     "test": "npm run make",
     "make": "sh ./scripts/make",
     "clean": "sh ./scripts/clean"
   },
-  "subdomain": "nemizida"
+  "subdomain": "nemesis"
 }
