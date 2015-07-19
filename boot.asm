@@ -6,7 +6,7 @@ line    db      0
 ;------------------------------------------;
 ;  Standard BIOS Parameter Block, "BPB".   ;
 ;------------------------------------------;
-    bpbOEM              db  'nemesis';
+    bpbOEM              db  'nemesis ';
     bpbSectSize         dw  512
     bpbClustSize        db  1
     bpbReservedSec      dw  1
