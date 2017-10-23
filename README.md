@@ -1,8 +1,5 @@
 Nemesis
 ===========
-[![Flattr][FlattrIMGURL]][FlattrURL]
-[FlattrIMGURL]:             http://api.flattr.com/button/flattr-badge-large.png
-[FlattrURL]:                https://flattr.com/submit/auto?user_id=coderaiser&url=github.com/coderaiser/nemesis&title=nemesis&language=&tags=github&category=software
 
 **Nemesis** is x86 operation system written on fasm.
 You can find more [inforamation](http://n3m1z1d4.pp.net.ua "information")
