@@ -293,11 +293,11 @@ Posted at 11:32
 _reboot             equ   0 
 _get_char           equ   1 
 _printf             equ   2 
-_find_file	        equ   3 
+_find_file          equ   3 
 _exec               equ   4 
-_find_first	        equ   5 
+_find_first         equ   5 
 _color	            equ   6 
-_setcursor	        equ   7 
+_setcursor          equ   7 
 _gets               equ   8 
 _cls                equ   9 
 _getcursor          equ   0xa 
@@ -321,7 +321,7 @@ data db 'h3ll0 w0rld =)!',0
 
 ```asm
 ;start_offset equ здесь мутим адрес, скоторого будет начинатся наша прога. 
-include 'sysint.inc' обьявление констант, что бы не переписывать ;). 
+include 'sysint.inc' ;обьявление констант, что бы не переписывать ;). 
 use16
 
 xor al,al;перезагрузка компа 
