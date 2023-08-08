@@ -1,6 +1,9 @@
 Nemesis
 ===========
 
+![image](https://github.com/coderaiser/nemesis/assets/1573141/05887dc2-ed19-41f1-9026-912e694a72c9)
+
+
 **Nemesis** is x86 operation system written on fasm.
 You can find more [information](http://n3m1z1d4.pp.net.ua "information")
 or try [online](http://coderaiser.github.io/nemesis "nemesis").
