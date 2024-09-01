@@ -15,6 +15,7 @@
   },
   "subdomain": "nemesis",
   "devDependencies": {
-    "@putout/printer": "^9.12.0"
+    "@putout/printer": "^9.12.0",
+    "supertape": "^10.7.3"
   }
 }
