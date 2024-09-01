@@ -13,5 +13,8 @@
     "make": "sh ./scripts/make",
     "clean": "sh ./scripts/clean"
   },
-  "subdomain": "nemesis"
+  "subdomain": "nemesis",
+  "devDependencies": {
+    "@putout/printer": "^9.12.0"
+  }
 }
