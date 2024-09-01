@@ -7,3 +7,5 @@ mtools*
 *.bin
 
 *.img
+node_modules
+.idea
