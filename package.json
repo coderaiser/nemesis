@@ -15,6 +15,7 @@
   },
   "subdomain": "nemesis",
   "devDependencies": {
+    "@putout/plugin-printer": "^3.1.0",
     "@putout/printer": "^9.12.0",
     "eslint": "^9.9.1",
     "eslint-plugin-putout": "^23.1.0",

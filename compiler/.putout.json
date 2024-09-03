@@ -1,0 +1,16 @@
+{
+    "printer": "putout",
+    "plugins": ["printer"],
+    "rules": {
+        "nodejs/declare": "off",
+        "github/convert-npm-to-bun": "off"
+    },
+    "match": {
+        "*.md": {
+            "printer/remove-args": "off"
+        },
+        "{test,debug.js}": {
+            "remove-console": "off"
+        }
+    }
+}
