@@ -1,3 +1,5 @@
+import {line, col, bgcolor, textcolor} from './a.js';
+
 cls: {
     push(es);
     push(ax);
@@ -20,11 +22,8 @@ cls: {
     pop(es);
     iret();
 }
-line            db    3
-minline         db    0
-maxline         db    24
-col             db    0
-mincol          db    0
-maxcol          db    79
-textcolor       db    2
-bgcolor         db    0
+
+line, db, 3;
+col, db, 0;
+textcolor, db, 2;
+bgcolor, db, 0;

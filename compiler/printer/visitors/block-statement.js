@@ -4,4 +4,4 @@ export const BlockStatement = (path, {traverse}) => {
     for (const element of body) {
         traverse(element);
     }
-}
+};

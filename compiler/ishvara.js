@@ -1,20 +1,21 @@
-import {print} from './printer/printer.js';
-import {readFileSync} from 'fs';
-import {parse} from 'putout';
-import {CallExpression} from './printer/visitors/call-expression.js';
-import {MemberExpression} from './printer/visitors/member-expression.js';
+import {readFileSync} from 'node:fs';
+import process from 'node:process';
+import esbuild from 'esbuild';
+import {jasmToAsm} from './jasm-to-asm/jasm-to-asm.js';
 
-const [arg] = process.argv.slice(2);
+const [infile] = process.argv.slice(2);
+const outfile = infile.replace(/\.js$/, '.ishtar.js');
 
-if (!arg) {
-    console.log('compile [source]');
-    process.exit();
-}
+esbuild.buildSync({
+    entryPoints: [infile],
+    bundle: true,
+    write: true,
+    outfile,
+    platform: 'node',
+});
 
-const source = readFileSync(arg, 'utf8');
-
-const ast = parse(source);
-
-const code = print(ast);
+const source = readFileSync(outfile, 'utf8');
+const code = jasmToAsm(source);
 
 process.stdout.write(code);
+

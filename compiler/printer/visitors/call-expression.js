@@ -1,5 +1,4 @@
 const {isArray} = Array;
-const exists = (a) => a.node;
 
 const parseArgs = (path) => {
     const argsPath = path.get('arguments');

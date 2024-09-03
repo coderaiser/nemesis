@@ -5,4 +5,4 @@ export const LabeledStatement = (path, {print, indent}) => {
     print.newline();
     print('__body');
     indent.dec();
-}
+};
