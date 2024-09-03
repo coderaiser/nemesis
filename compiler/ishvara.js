@@ -1,7 +1,8 @@
-import {print} from '@putout/printer';
+import {print} from './printer/printer.js';
 import {readFileSync} from 'fs';
 import {parse} from 'putout';
-import {CallExpression} from './call-expression.js';
+import {CallExpression} from './printer/visitors/call-expression.js';
+import {MemberExpression} from './printer/visitors/member-expression.js';
 
 const [arg] = process.argv.slice(2);
 
@@ -14,10 +15,6 @@ const source = readFileSync(arg, 'utf8');
 
 const ast = parse(source);
 
-const code = print(ast, {
-    visitors: {
-        CallExpression,
-    }
-});
+const code = print(ast);
 
-console.log(code);
+process.stdout.write(code);
