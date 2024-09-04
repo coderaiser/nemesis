@@ -1,1 +1,6 @@
 eslint.config.*
+.*
+yarn-error.log
+coverage
+*.config.*
+*.spec.js

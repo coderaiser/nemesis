@@ -1,7 +1,7 @@
-const {createTest} = require('@putout/test');
-const plugin = require('.');
+import {createTest} from '@putout/test';
+import * as plugin from './index.js';
 
-const test = createTest(__dirname, {
+const test = createTest(import.meta.url, {
     printer: 'putout',
     plugins: [
         ['move-vars-to-bottom', plugin],

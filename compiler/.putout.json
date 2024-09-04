@@ -2,6 +2,7 @@
     "printer": "putout",
     "plugins": ["printer"],
     "rules": {
-        "nodejs/declare": "off"
+        "nodejs/declare": "off",
+        "putout": "on"
     }
 }

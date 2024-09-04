@@ -1,16 +1,17 @@
-const {operator: operator} = require('putout');
+import {operator} from 'putout';
+
 const {remove} = operator;
 
-module.exports.report = () => `Move 'var' to bottom of the file`;
+export const report = () => `Move 'var' to bottom of the file`;
 
-module.exports.fix = (path) => {
+export const fix = (path) => {
     delete path.node.leadingComments;
     delete path.node.trailingComments;
     
     path.parentPath.node.body.push(path.node);
     remove(path);
 };
-module.exports.traverse = ({push}) => ({
+export const traverse = ({push}) => ({
     VariableDeclaration(path) {
         const prev = path.getPrevSibling();
         
