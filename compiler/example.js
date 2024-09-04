@@ -5,9 +5,9 @@ import {
     textcolor,
 } from './a.js';
 
-org['7c00h'];
 use16();
-boot: jmp.short.start();
+jmp.short.start();
+equ(kernel_begin, '0x7e00');
 
 push(es);
 push(ax);

@@ -5,9 +5,9 @@ var textcolor = 2;
 var bgcolor = 0;
 
 // example.js
-org["7c00h"];
 use16();
-boot: jmp.short.start();
+jmp.short.start();
+equ(kernel_begin, "0x7e00");
 push(es);
 push(ax);
 push(di);

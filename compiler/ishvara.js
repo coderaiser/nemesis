@@ -20,4 +20,3 @@ const jasm = ishvaraToJasm(source);
 const code = jasmToAsm(jasm);
 
 process.stdout.write(code);
-
