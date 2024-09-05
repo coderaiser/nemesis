@@ -7,7 +7,7 @@ var bgcolor = 0;
 // example.js
 use16();
 jmp.short.start();
-equ(kernel_begin, "0x7e00");
+equ(kernel_begin, 32256);
 push(es);
 push(ax);
 push(di);

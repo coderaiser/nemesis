@@ -7,7 +7,7 @@ import {
 
 use16();
 jmp.short.start();
-equ(kernel_begin, '0x7e00');
+equ(kernel_begin, 0x7e00);
 
 push(es);
 push(ax);

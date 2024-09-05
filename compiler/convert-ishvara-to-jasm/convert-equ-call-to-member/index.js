@@ -12,7 +12,7 @@ const createEqu = template('__a.equ[__b]', {
 });
 
 export const replace = () => ({
-    'equ(__a, __b)': ({__a, __b}, path) => {
+    'equ(__a, __b)': ({__a, __b}) => {
         return createEqu({
             __a,
             __b: maybeStringLiteral(__b),
@@ -24,5 +24,6 @@ function maybeStringLiteral(a) {
     if (isStringLiteral(a))
         return a;
     
-    return StringLiteral(a.raw);
+    const hex = '0x' + Number(a.raw).toString(16);
+    return StringLiteral(hex);
 }
