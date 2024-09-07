@@ -3,8 +3,6 @@ export const MemberExpression = (path, {print}) => {
     print('__object');
     print(' ');
     
-    if (computed)
-        print(property.value);
-    else
-        print('__property');
+    print('__property');
 };
+

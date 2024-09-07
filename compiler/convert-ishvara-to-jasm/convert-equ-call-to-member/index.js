@@ -25,5 +25,6 @@ function maybeStringLiteral(a) {
         return a;
     
     const hex = '0x' + Number(a.raw).toString(16);
+    
     return StringLiteral(hex);
 }

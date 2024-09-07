@@ -6,4 +6,3 @@ export const SequenceExpression = (path, {traverse, write}) => {
         write(' ');
     }
 };
-

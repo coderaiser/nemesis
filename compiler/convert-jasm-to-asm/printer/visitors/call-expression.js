@@ -17,7 +17,7 @@ export function CallExpression(path, {indent, print, maybe, traverse}) {
     
     traverse(callee);
     
-    maybe.print(args.length, ' ');
+    maybe.print.space(args.length);
     
     const n = args.length - 1;
     
@@ -36,10 +36,8 @@ export function CallExpression(path, {indent, print, maybe, traverse}) {
             continue;
         }
         
-        if (i < n) {
-            print(',');
-            print.space();
-        }
+        if (i < n)
+            print(', ');
     }
     
     if (isParentCall) {
