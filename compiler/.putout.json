@@ -3,6 +3,7 @@
     "plugins": ["printer"],
     "rules": {
         "nodejs/declare": "off",
+        "convert-assignment-to-declaration": "off",
         "putout": "on"
     }
 }

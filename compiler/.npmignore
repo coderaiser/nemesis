@@ -5,3 +5,4 @@ coverage
 fixture
 *.config.*
 *.spec.js
+test

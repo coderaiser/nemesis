@@ -5,8 +5,9 @@ import * as convEquCallToMember from './convert-equ-call-to-member/index.js';
 import * as convertDecToHex from './convert-dec-to-hex/index.js';
 import * as convertAssignToMember from './convert-assign-to-member/index.js';
 import * as convertAssignToAdd from './convert-assign-to-add/index.js';
+import * as convertAssignToMov from './convert-assign-to-mov/index.js';
 
-export const ishvaraToJasm = (source) => {
+export const convertIshvaraToJasm = (source) => {
     const {code} = putout(source, {
         plugins: [
             ['ishvara/move-vars-to-bottom', moveVarsToBottom],
@@ -15,6 +16,7 @@ export const ishvaraToJasm = (source) => {
             ['ishvara/convert-equ-call-to-member', convEquCallToMember],
             ['ishvara/convert-assign-to-member', convertAssignToMember],
             ['ishvara/convert-assign-to-add', convertAssignToAdd],
+            ['ishvara/convert-assign-to-mov', convertAssignToMov],
         ],
     });
     

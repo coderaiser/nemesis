@@ -5,6 +5,8 @@ import {
     textcolor,
 } from './a.js';
 
+const ah = [textcolor];
+
 use16();
 
 jmp.short.start();
@@ -22,12 +24,12 @@ push(es);
 push(ax);
 push(di);
 
-mov(ax, 0xb800);
+ax = 0xb800;
 mov(es, ax);
 xor(ax, ax);
 mov(ah, [bgcolor]);
 shl(ah, 4);
-ah += [textcolor];
+
 xor(di, 0);
 mov(cx, 25 + 80);
 rep.stosw();
