@@ -1,6 +1,6 @@
 {
   "name": "ishvara",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "author": "coderaiser <mnemonic.enemy@gmail.com> (https://github.com/coderaiser)",
   "description": "Compile JavaScript tot FASM",
@@ -28,7 +28,9 @@
     "esbuild": "^0.23.1",
     "putout": "^36.4.2"
   },
-  "keywords": ["putout"],
+  "keywords": [
+    "putout"
+  ],
   "devDependencies": {
     "@putout/plugin-printer": "^3.1.0",
     "@putout/test": "^11.0.0",
