@@ -6,18 +6,17 @@ var bgcolor = 0;
 
 // example.js
 var ah = [textcolor];
-
 use16();
 jmp.short.start();
 rb(512 - $ - boot - 2);
-db.bpbOEM = 'nemesis ';
+db.bpbOEM = "nemesis ";
 dw.bpbSectSize = 512;
-equ(kernel_begin, 32_256);
+equ(kernel_begin, 32256);
 xor(ax, ax);
 push(es);
 push(ax);
 push(di);
-ax = 47_104;
+ax = 47104;
 mov(es, ax);
 xor(ax, ax);
 mov(ah, [bgcolor]);
