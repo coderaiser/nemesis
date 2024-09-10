@@ -8,3 +8,4 @@ Transforms:
 - [convert-assign-to-member](https://putout.cloudcmd.io/#/gist/7624d8ad5507586ba4ba25f30a9ae26b/085ae7ea6a1c449013fd5806c390ac1ce5eb1c17);
 - [convert-assign-to-add](https://putout.cloudcmd.io/#/gist/043e2fec17734c5671a8528091d1275b/f200da1222cdd86fee5fd3125a67f2d0703391d7);
 - [convert-assign-to-mov](https://putout.cloudcmd.io/#/gist/1e4a2f439d20fe7cad91d75881bce08a/e5dc7cad875e4be3faafb47f384115cf28a62d25);
+- [convert-assign-to-xor](https://putout.cloudcmd.io/#/gist/1e4a2f439d20fe7cad91d75881bce08a/e5dc7cad875e4be3faafb47f384115cf28a62d2);
