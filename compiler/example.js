@@ -25,10 +25,16 @@ push(ax);
 push(di);
 
 ax = 0xb800;
-mov(es, ax);
-xor(ax, ax);
+es = ax;
+ax ^= ax;
 mov(ah, [bgcolor]);
 shl(ah, 4);
+add(ah, [textcolor]);
+xor(di, 0);
+mov(cx, 25 + 80);
+rep.stosw();
+mov([line], 0);
+mov([col], 0);
 
 xor(di, 0);
 mov(cx, 25 + 80);

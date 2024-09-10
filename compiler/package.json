@@ -28,9 +28,7 @@
     "esbuild": "^0.23.1",
     "putout": "^36.4.2"
   },
-  "keywords": [
-    "putout"
-  ],
+  "keywords": ["putout"],
   "devDependencies": {
     "@putout/plugin-printer": "^3.1.0",
     "@putout/test": "^11.0.0",

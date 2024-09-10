@@ -23,9 +23,8 @@ export const createTest = (url) => {
 
 const compile = ({dir}) => (t) => (name) => {
     const from = join(dir, 'fixture', `${name}.js`);
-    const to = join(dir, 'fixture', `${name}.js`);
+    const to = join(dir, 'fixture', `${name}-fix.js`);
     const fromData = readFileSync(from, 'utf8');
-    const toData = readFileSync(to, 'utf8');
     
     const result = convertIshvaraToJasm(fromData);
     
@@ -33,6 +32,8 @@ const compile = ({dir}) => (t) => (name) => {
         writeFileSync(to, result);
         return t.pass('update fixture');
     }
+
+    const toData = readFileSync(to, 'utf8');
     
     return t.equal(result, toData);
 };
