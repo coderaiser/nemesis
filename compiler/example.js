@@ -5,7 +5,7 @@ import {
     textcolor,
 } from './a.js';
 
-const ah = [textcolor];
+let ah = [textcolor];
 
 use16();
 
@@ -18,7 +18,7 @@ dw.bpbSectSize = 512;
 
 equ(kernel_begin, 0x7e00);
 
-xor(ax, ax);
+ax ^= ax;
 
 push(es);
 push(ax);
@@ -27,7 +27,7 @@ push(di);
 ax = 0xb800;
 es = ax;
 ax ^= ax;
-mov(ah, [bgcolor]);
+ah = [bgcolor];
 shl(ah, 4);
 add(ah, [textcolor]);
 xor(di, 0);

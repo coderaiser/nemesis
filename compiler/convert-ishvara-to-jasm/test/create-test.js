@@ -32,7 +32,7 @@ const compile = ({dir}) => (t) => (name) => {
         writeFileSync(to, result);
         return t.pass('update fixture');
     }
-
+    
     const toData = readFileSync(to, 'utf8');
     
     return t.equal(result, toData);
