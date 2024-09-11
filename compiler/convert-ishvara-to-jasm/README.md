@@ -10,3 +10,4 @@ Transforms:
 - [convert-assign-to-mov](https://putout.cloudcmd.io/#/gist/1e4a2f439d20fe7cad91d75881bce08a/e5dc7cad875e4be3faafb47f384115cf28a62d25);
 - [convert-assign-to-xor](https://putout.cloudcmd.io/#/gist/1e4a2f439d20fe7cad91d75881bce08a/e5dc7cad875e4be3faafb47f384115cf28a62d2);
 - [convert-assign-to-shl](https://putout.cloudcmd.io/#/gist/e7b609200727bb78cfa073c0c1220c46/da0309ac125855533f7e0baa332b0670fd46f6b2);
+- [split-stack-operations](https://putout.cloudcmd.io/#/gist/e7b609200727bb78cfa073c0c1220c46/da0309ac125855533f7e0baa332b0670fd46f6b2);
