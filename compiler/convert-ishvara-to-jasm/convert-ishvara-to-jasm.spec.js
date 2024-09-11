@@ -21,3 +21,8 @@ test('ishvara: convert-ishvara-to-jasm: convert-assign-to-shl', (t) => {
     t.compile('convert-assign-to-shl');
     t.end();
 });
+
+test('ishvara: convert-ishvara-to-jasm: split-stack-operations', (t) => {
+    t.compile('split-stack-operations');
+    t.end();
+});

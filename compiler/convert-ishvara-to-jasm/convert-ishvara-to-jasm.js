@@ -8,6 +8,7 @@ import * as convertAssignToAdd from './convert-assign-to-add/index.js';
 import * as convertAssignToMov from './convert-assign-to-mov/index.js';
 import * as convertAssignToXor from './convert-assign-to-xor/index.js';
 import * as convertAssignToShl from './convert-assign-to-shl/index.js';
+import * as splitStackOperations from './split-stack-operations/index.js';
 
 export const convertIshvaraToJasm = (source) => {
     const {code} = putout(source, {
@@ -21,6 +22,7 @@ export const convertIshvaraToJasm = (source) => {
             ['ishvara/convert-assign-to-mov', convertAssignToMov],
             ['ishvara/convert-assign-to-xor', convertAssignToXor],
             ['ishvara/convert-assign-to-shl', convertAssignToShl],
+            ['ishvara/split-stack-operations', splitStackOperations],
         ],
     });
     

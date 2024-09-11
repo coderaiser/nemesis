@@ -13,6 +13,7 @@ esbuild.buildSync({
     write: true,
     minify: false,
     outfile,
+    mainFields: ['browser', 'main'],
     platform: 'node',
 });
 

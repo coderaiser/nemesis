@@ -2,29 +2,27 @@
 var line = 3;
 var col = 0;
 var textcolor = 2;
-var bgcolor = 0;
 
 // example.js
-var ah = [textcolor];
-
 use16();
 jmp.short.start();
 rb(512 - $ - boot - 2);
-db.bpbOEM = 'nemesis ';
+db.bpbOEM = "nemesis ";
 dw.bpbSectSize = 512;
-equ(kernel_begin, 32_256);
-xor(ax, ax);
-push(es);
-push(ax);
-push(di);
-ax = 47_104;
+equ(kernel_begin, 32256);
+ax ^= ax;
+push([
+  es,
+  ax,
+  di
+]);
+ax = 47104;
 es = ax;
 ax ^= ax;
-mov(ah, [bgcolor]);
-shl(ah, 4);
-add(ah, [textcolor]);
-xor(di, 0);
-mov(cx, 25 + 80);
+ah <<= 4;
+ah += [textcolor];
+di ^= 0;
+cx = 25 + 80;
 rep.stosw();
 mov([line], 0);
 mov([col], 0);
@@ -33,7 +31,9 @@ mov(cx, 25 + 80);
 rep.stosw();
 mov([line], 0);
 mov([col], 0);
-pop(di);
-pop(ax);
-pop(es);
+pop([
+  di,
+  ax,
+  es
+]);
 iret();
