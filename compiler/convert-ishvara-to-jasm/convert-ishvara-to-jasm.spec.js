@@ -22,6 +22,11 @@ test('ishvara: convert-ishvara-to-jasm: convert-assign-to-shl', (t) => {
     t.end();
 });
 
+test('ishvara: convert-ishvara-to-jasm: convert-function-to-label', (t) => {
+    t.compile('convert-function-to-label');
+    t.end();
+});
+
 test('ishvara: convert-ishvara-to-jasm: split-stack-operations', (t) => {
     t.compile('split-stack-operations');
     t.end();

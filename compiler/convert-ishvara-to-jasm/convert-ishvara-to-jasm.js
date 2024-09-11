@@ -9,9 +9,11 @@ import * as convertAssignToMov from './convert-assign-to-mov/index.js';
 import * as convertAssignToXor from './convert-assign-to-xor/index.js';
 import * as convertAssignToShl from './convert-assign-to-shl/index.js';
 import * as splitStackOperations from './split-stack-operations/index.js';
+import * as convertFunctionToLabel from './convert-function-to-label/index.js';
 
 export const convertIshvaraToJasm = (source) => {
     const {code} = putout(source, {
+        isTS: true,
         plugins: [
             ['ishvara/move-vars-to-bottom', moveVarsToBottom],
             ['ishvara/convert-vars-to-db', convertVarToDb],
@@ -22,6 +24,7 @@ export const convertIshvaraToJasm = (source) => {
             ['ishvara/convert-assign-to-mov', convertAssignToMov],
             ['ishvara/convert-assign-to-xor', convertAssignToXor],
             ['ishvara/convert-assign-to-shl', convertAssignToShl],
+            ['ishvara/convert-function-to-label', convertFunctionToLabel],
             ['ishvara/split-stack-operations', splitStackOperations],
         ],
     });

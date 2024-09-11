@@ -21,7 +21,7 @@ push([
     es,
     ax,
     di,
-])
+]);
 
 ax = 0xb800;
 es = ax;
@@ -46,5 +46,5 @@ pop([
     di,
     ax,
     es,
-])
+]);
 iret();

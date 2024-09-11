@@ -3,6 +3,7 @@ import {fileURLToPath} from 'node:url';
 import {dirname, join} from 'node:path';
 import process from 'node:process';
 import {extend} from 'supertape';
+import tryCatch from 'try-catch';
 import {convertIshvaraToJasm} from '../convert-ishvara-to-jasm.js';
 
 const {UPDATE} = process.env;
@@ -21,10 +22,32 @@ export const createTest = (url) => {
     });
 };
 
-const compile = ({dir}) => (t) => (name) => {
+const guessFileType = ({dir, name}) => {
     const from = join(dir, 'fixture', `${name}.js`);
     const to = join(dir, 'fixture', `${name}-fix.js`);
-    const fromData = readFileSync(from, 'utf8');
+    const [error, fromData] = tryCatch(readFileSync, from, 'utf8');
+    
+    if (error) {
+        const from = join(dir, 'fixture', `${name}.ts`);
+        const to = join(dir, 'fixture', `${name}-fix.ts`);
+        
+        return {
+            to,
+            fromData: readFileSync(from, 'utf8'),
+        };
+    }
+    
+    return {
+        fromData,
+        to,
+    };
+};
+
+const compile = ({dir}) => (t) => (name) => {
+    const {fromData, to} = guessFileType({
+        dir,
+        name,
+    });
     
     const result = convertIshvaraToJasm(fromData);
     
@@ -46,3 +69,4 @@ const noCompile = ({dir}) => (t) => (name) => {
     
     return t.equal(result, fromData);
 };
+

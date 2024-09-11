@@ -11,3 +11,4 @@ Transforms:
 - [convert-assign-to-xor](https://putout.cloudcmd.io/#/gist/1e4a2f439d20fe7cad91d75881bce08a/e5dc7cad875e4be3faafb47f384115cf28a62d2);
 - [convert-assign-to-shl](https://putout.cloudcmd.io/#/gist/e7b609200727bb78cfa073c0c1220c46/da0309ac125855533f7e0baa332b0670fd46f6b2);
 - [split-stack-operations](https://putout.cloudcmd.io/#/gist/e7b609200727bb78cfa073c0c1220c46/da0309ac125855533f7e0baa332b0670fd46f6b2);
+- [convert-function-to-label](https://putout.cloudcmd.io/#/gist/415829430c67b2824c26901b2cc89fb0/ed8a2186889a0135302bbb64fee0a9ce2d084800);
