@@ -20,7 +20,8 @@ export const replace = () => ({
         
         return '__a: __body';
     },
-    'function __a<__type_params>() {__body}': ({__type_params, __body}) => {
+    'function __a<__type_params>() {__body}': ({__type_params, __body}, path) => {
+        console.log(__type_params, path + '');
         addStackOperations({
             __type_params,
             __body,
@@ -33,6 +34,7 @@ export const replace = () => ({
 
 function addStackOperations({__type_params, __body}) {
     const args = [];
+    console.log(__type_params);
     
     for (const {name} of __type_params) {
         args.push(name);

@@ -4,7 +4,7 @@ var col = 0;
 var textcolor = 2;
 var bgcolor = 0;
 
-// example.js
+// example.ts
 cls: {
   push(es);
   push(ax);

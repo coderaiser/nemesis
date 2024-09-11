@@ -5,7 +5,7 @@ import {jasmToAsm} from './convert-jasm-to-asm/jasm-to-asm.js';
 import {convertIshvaraToJasm} from './convert-ishvara-to-jasm/convert-ishvara-to-jasm.js';
 
 const [infile] = process.argv.slice(2);
-const outfile = infile.replace(/\.js$/, '.ishtar.js');
+const outfile = infile.replace(/\.ts$/, '.ishtar.js');
 
 esbuild.buildSync({
     entryPoints: [infile],

@@ -1,4 +1,4 @@
-// example.js
+// example.ts
 cls: {
     push(es);
     push(ax);
