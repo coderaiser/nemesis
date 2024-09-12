@@ -17,3 +17,13 @@ test('compiler: convert-function-to-label: transform', (t) => {
     t.transform('convert-function-to-label');
     t.end();
 });
+
+test('compiler: convert-function-to-label: transform: async', (t) => {
+    t.transform('async');
+    t.end();
+});
+
+test('compiler: convert-function-to-label: transform: no-stack', (t) => {
+    t.transform('no-stack');
+    t.end();
+});

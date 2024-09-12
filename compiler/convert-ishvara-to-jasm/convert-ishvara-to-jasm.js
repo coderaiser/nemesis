@@ -8,6 +8,7 @@ import * as convertAssignToAdd from './convert-assign-to-add/index.js';
 import * as convertAssignToMov from './convert-assign-to-mov/index.js';
 import * as convertAssignToXor from './convert-assign-to-xor/index.js';
 import * as convertAssignToShl from './convert-assign-to-shl/index.js';
+import * as convertAwaitToCall from './convert-await-to-call/index.js';
 import * as splitStackOperations from './split-stack-operations/index.js';
 import * as convertFunctionToLabel from './convert-function-to-label/index.js';
 
@@ -25,6 +26,7 @@ export const convertIshvaraToJasm = (source) => {
             ['ishvara/convert-assign-to-xor', convertAssignToXor],
             ['ishvara/convert-assign-to-shl', convertAssignToShl],
             ['ishvara/convert-function-to-label', convertFunctionToLabel],
+            ['ishvara/convert-await-to-call', convertAwaitToCall],
             ['ishvara/split-stack-operations', splitStackOperations],
         ],
     });

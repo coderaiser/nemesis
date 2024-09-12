@@ -4,7 +4,6 @@ import {
     textcolor,
 } from './a.js';
 
-
 use16();
 
 jmp.short.start();
@@ -50,9 +49,13 @@ pop([
 ]);
 iret();
 
-write();
+call(write);
 
-function write<es, ax, di>() {
+async function write<es, ax, di>() {
+    await clear({
+        cl: 1,
+        ch: 2,
+    });
     mov(ax, 3);
     int(0xff);
 }

@@ -69,4 +69,3 @@ const noCompile = ({dir}) => (t) => (name) => {
     
     return t.equal(result, fromData);
 };
-

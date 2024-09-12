@@ -10,31 +10,31 @@ const {
 export const report = () => `Use 'label' instead of 'function'`;
 
 export const replace = () => ({
-    'function __a<__type_params>(): __b {__body}': ({__b, __type_params, __body}) => {
-        addStackOperations({
-            __type_params,
-            __body,
-        });
-        
-        __body.body.push(ExpressionStatement(__b.typeName));
-        
-        return '__a: __body';
-    },
-    'function __a<__type_params>() {__body}': ({__type_params, __body}, path) => {
-        console.log(__type_params, path + '');
-        addStackOperations({
-            __type_params,
-            __body,
-        });
-        __body.body.push(ExpressionStatement(Identifier('ret')));
-        
-        return '__a: __body';
-    },
+    'async function __a<__type_params>(__args): __b {__body}': convertFnToLabel(),
+    'function __a<__type_params>(__args): __b {__body}': convertFnToLabel(),
+    'function __a(__args): __b {__body}': convertFnToLabel(),
+    'async function __a(__args): __b {__body}': convertFnToLabel(),
+    'async function __a<__type_params>(__args) {__body}': convertFnToLabel('ret'),
+    'function __a<__type_params>(__args) {__body}': convertFnToLabel('ret'),
+    'function __a(__args) {__body}': convertFnToLabel('ret'),
+    'async function __a(__args) {__body}': convertFnToLabel('ret'),
 });
 
-function addStackOperations({__type_params, __body}) {
+const convertFnToLabel = (ret) => ({__b, __type_params, __body}) => {
+    addStackOperations({
+        __type_params,
+        __body,
+    });
+    
+    __body.body.push(ExpressionStatement(maybeRet(ret) || __b.typeName));
+    
+    return '__a: __body';
+};
+
+const maybeRet = (name) => name && Identifier(name);
+
+function addStackOperations({__body, __type_params = []}) {
     const args = [];
-    console.log(__type_params);
     
     for (const {name} of __type_params) {
         args.push(name);

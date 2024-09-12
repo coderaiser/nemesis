@@ -37,8 +37,12 @@ pop([
   es
 ]);
 iret();
-write();
-function write() {
+call(write);
+async function write() {
+  await clear({
+    cl: 1,
+    ch: 2
+  });
   mov(ax, 3);
   int(255);
 }

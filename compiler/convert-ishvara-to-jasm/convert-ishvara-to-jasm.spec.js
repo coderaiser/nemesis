@@ -31,3 +31,8 @@ test('ishvara: convert-ishvara-to-jasm: split-stack-operations', (t) => {
     t.compile('split-stack-operations');
     t.end();
 });
+
+test('ishvara: convert-ishvara-to-jasm: convert-await-to-call', (t) => {
+    t.compile('convert-await-to-call');
+    t.end();
+});
