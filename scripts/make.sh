@@ -29,7 +29,7 @@ if which mkdosfs
             wget https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz
             tar -zxf dosfstools-4.2.tar.gz    
             cd dosfstools-4.2
-            make
+            ./configure && make
             cd ..
         fi
         mkdosfs="dosfstools-4.2/src/fsck.fat"
