@@ -1,0 +1,2 @@
+tasks:
+  - init: apt-get install dosfstools && ./scripts/make.sh
