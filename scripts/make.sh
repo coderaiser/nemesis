@@ -26,14 +26,14 @@ if which mkdosfs
         FILE_EXIST=`ls -al | grep dosfstools`
         if [ "$FILE_EXIST" == "" ]
           then
-            wget http://daniel-baumann.ch/files/software/dosfstools/dosfstools-3.0.16.tar.gz
-            tar -zxf dosfstools*.tar.gz    
-            cd dosfstools*
+            wget https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz
+            tar -zxf dosfstools-4.2.tar.gz    
+            cd dosfstools-4.2
             make
             cd ..
         fi
-        mkdosfs="dos*/mkdosfs"
-        dosfsck="dos*/dosfsck"
+        mkdosfs="dosfstools-4.2/mkdosfs"
+        dosfsck="dosfstools-4.2/dosfsck"
     fi
 
 echo '>check mcopy'
