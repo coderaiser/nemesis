@@ -47,11 +47,11 @@ if which mcopy
           then
             wget ftp://ftp.gnu.org/gnu/mtools/mtools-4.0.18.tar.gz
             tar -zxf mtools*.tar.gz
-            cd mtools*
+            cd mtools-4.0.18
             ./configure && make
             cd ..
         fi
-        mcopy="mtools*/mcopy"
+        mcopy="mtools-4.0.18.tar.gz/mcopy"
     fi
 
 echo '>check node'
