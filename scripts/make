@@ -89,7 +89,7 @@ $mcopy -i nemizida.img kernel/kernel.bin ::/
 $mcopy -i nemizida.img shell/sh3ll.bin ::/ 
 echo '----------------------------------'
 #write boot record
-$node scripts/bootwrite.js
+$node ./scripts/bootwrite.js
 
 dd if=nemizida.img of=nemizida_small.img bs=512 count=40
 
