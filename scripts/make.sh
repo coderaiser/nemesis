@@ -1,6 +1,6 @@
 #/bin/sh
 
-echo '>check fasm'
+echo '> check fasm'
 echo '----------------------------------'
 if which fasm
     then
@@ -16,11 +16,11 @@ if which fasm
         fasm="./fasm/fasm.x64"
     fi
 
-echo '>check mkdosfs'
+echo '> check mkdosfs'
 echo '----------------------------------'
 if which mkdosfs
     then
-        mkdosfs="fsck.fat"
+        mkdosfs="mkfs.fat"
         dosfsck="fsck.fat"
     else
         FILE_EXIST=`ls -al | grep dosfstools`
@@ -32,11 +32,11 @@ if which mkdosfs
             ./configure && make
             cd ..
         fi
-        mkdosfs="dosfstools-4.2/src/fsck.fat"
+        mkdosfs="dosfstools-4.2/src/mkfs.fat"
         dosfsck="dosfstools-4.2/src/fsck.fat"
     fi
 
-echo '>check mcopy'
+echo '> check mcopy'
 echo '----------------------------------'
 if which mcopy
     then
@@ -54,7 +54,7 @@ if which mcopy
         mcopy="mtools-4.0.18/mcopy"
     fi
 
-echo '>check node'
+echo '> check node'
 echo '----------------------------------'
 if which node
     then
@@ -73,27 +73,27 @@ if which node
     fi
 
 #compile
-echo '>compile boot.asm'
+echo '> compile boot.asm'
 $fasm boot.asm
-echo '>compile kernel'
+echo '> compile kernel'
 $fasm kernel/kernel.asm
-echo '>compile shell'
+echo '> compile shell'
 $fasm shell/sh3ll.asm
 echo '----------------------------------'
 #making floppy image
 dd if=/dev/zero of=nemizida.img bs=512 count=2880
 $mkdosfs nemizida.img
 
-#write kernel and shell
+# write kernel and shell
 $mcopy -i nemizida.img kernel/kernel.bin ::/ 
 $mcopy -i nemizida.img shell/sh3ll.bin ::/ 
 echo '----------------------------------'
-#write boot record
+# write boot record
 $node ./scripts/bootwrite.js
 
 dd if=nemizida.img of=nemizida_small.img bs=512 count=40
 
-#check result image
+# check result image
 $dosfsck nemizida.img
 
 echo "Image \"nemizida.img\" created."
