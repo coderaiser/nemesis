@@ -13,7 +13,7 @@ if which fasm
             mv fasm*tgz fasm.tar.gz
             tar -zxf fasm.tar.gz
         fi
-        fasm="fasm/fasm"
+        fasm="./fasm/fasm.x64"
     fi
 
 echo '>check mkdosfs'
@@ -32,8 +32,8 @@ if which mkdosfs
             make
             cd ..
         fi
-        mkdosfs="dosfstools-4.2/mkdosfs"
-        dosfsck="dosfstools-4.2/dosfsck"
+        mkdosfs="dosfstools-4.2/src/mkdosfs"
+        dosfsck="dosfstools-4.2/src/dosfsck"
     fi
 
 echo '>check mcopy'
