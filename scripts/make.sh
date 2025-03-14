@@ -20,8 +20,8 @@ echo '>check mkdosfs'
 echo '----------------------------------'
 if which mkdosfs
     then
-        mkdosfs="mkdosfs"
-        dosfsck="dosfsck"
+        mkdosfs="fsck.fat"
+        dosfsck="fsck.fat"
     else
         FILE_EXIST=`ls -al | grep dosfstools`
         if [ "$FILE_EXIST" == "" ]
@@ -32,8 +32,8 @@ if which mkdosfs
             make
             cd ..
         fi
-        mkdosfs="dosfstools-4.2/src/mkdosfs"
-        dosfsck="dosfstools-4.2/src/dosfsck"
+        mkdosfs="dosfstools-4.2/src/fsck.fat"
+        dosfsck="dosfstools-4.2/src/fsck.fat"
     fi
 
 echo '>check mcopy'
@@ -51,7 +51,7 @@ if which mcopy
             ./configure && make
             cd ..
         fi
-        mcopy="mtools-4.0.18.tar.gz/mcopy"
+        mcopy="mtools-4.0.18/mcopy"
     fi
 
 echo '>check node'
