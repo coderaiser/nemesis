@@ -20,6 +20,6 @@
     "eslint": "^9.9.1",
     "eslint-plugin-putout": "^26.1.0",
     "putout": "^40.0.14",
-    "supertape": "^10.7.3"
+    "supertape": "^11.1.0"
   }
 }
