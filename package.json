@@ -18,7 +18,7 @@
     "@putout/plugin-printer": "^5.0.0",
     "@putout/printer": "^14.5.1",
     "eslint": "^9.9.1",
-    "eslint-plugin-putout": "^23.1.0",
+    "eslint-plugin-putout": "^26.1.0",
     "putout": "^36.4.1",
     "supertape": "^10.7.3"
   }
