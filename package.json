@@ -19,7 +19,7 @@
     "@putout/printer": "^14.5.1",
     "eslint": "^9.9.1",
     "eslint-plugin-putout": "^26.1.0",
-    "putout": "^36.4.1",
+    "putout": "^40.0.14",
     "supertape": "^10.7.3"
   }
 }
