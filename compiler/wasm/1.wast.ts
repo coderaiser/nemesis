@@ -1,10 +1,10 @@
-import {create, type i32} from './creator';
+import {create} from './creator';
 
 export const stack = [];
-export const imports = [
-    ['console', 'log', (message: i32) => {}],
-];
 
+export const imports = [
+    ['console', 'log', (i32) => {}],
+];
 
 const {
     i32,
@@ -15,7 +15,8 @@ const {
     imports,
 });
 
+// @ts-expect-error
 export function x(a: i32, b: i32): i32 {
     i32.add(local.get(a), local.get(b));
     call('log');
-};
+}

@@ -1,5 +1,5 @@
 import {test, stub} from 'supertape';
-import * as one from './1.ts';
+import * as one from './1.wast.js';
 import {prepare} from './prepare.js';
 
 const preparedOne = prepare(one);

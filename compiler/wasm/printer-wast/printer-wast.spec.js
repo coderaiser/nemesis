@@ -1,6 +1,6 @@
 import {test} from 'supertape';
 import montag from 'montag';
-import {jasmToWast} from './jasm-to-wast.js';
+import {printerWast} from './printer-wast.js';
 
 test('ishvara: convert-jasm-to-wast', (t) => {
     const source = montag`
@@ -10,7 +10,7 @@ test('ishvara: convert-jasm-to-wast', (t) => {
         }
     `;
     
-    const result = jasmToWast(source);
+    const result = printerWast(source);
     const expected = montag`
         (module
             (func $x (export "x") (param $a i32) (param $b i32) (result i32)
@@ -23,4 +23,3 @@ test('ishvara: convert-jasm-to-wast', (t) => {
     t.equal(result, expected);
     t.end();
 });
-

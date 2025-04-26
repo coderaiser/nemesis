@@ -4,7 +4,7 @@ import {dirname, join} from 'node:path';
 import process from 'node:process';
 import {extend} from 'supertape';
 import tryCatch from 'try-catch';
-import {convertIshvaraToJasm} from '../convert-ishvara-to-jasm.js';
+import {putoutWastTs} from '../index.js';
 
 const {UPDATE} = process.env;
 
@@ -49,7 +49,7 @@ const compile = ({dir}) => (t) => (name) => {
         name,
     });
     
-    const result = convertIshvaraToJasm(fromData);
+    const result = putoutWastTs(fromData);
     
     if (UPDATE === '1') {
         writeFileSync(to, result);
@@ -65,7 +65,7 @@ const noCompile = ({dir}) => (t) => (name) => {
     const from = join(dir, 'fixture', `${name}.gs`);
     const fromData = readFileSync(from, 'utf8');
     
-    const result = convertIshvaraToJasm(fromData);
+    const result = putoutWastTs(fromData);
     
     return t.equal(result, fromData);
 };
