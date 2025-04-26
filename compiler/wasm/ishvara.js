@@ -1,8 +1,8 @@
 import {readFileSync} from 'node:fs';
 import process from 'node:process';
 import putout from 'putout';
+import * as pluginWastTS from '#putout-plugin-wast-ts';
 import {printWast} from './printer-wast/printer-wast.js';
-import * as pluginWastTS from './putout-plugin-wast-ts/index.js';
 
 const [input] = process.argv.slice(2);
 
@@ -12,6 +12,7 @@ if (!input) {
 }
 
 const source = readFileSync(input, 'utf8');
+
 const {code: plainWastTs} = putout(source, {
     fix: true,
     isTS: true,
@@ -23,3 +24,4 @@ const {code: plainWastTs} = putout(source, {
 const code = printWast(plainWastTs);
 
 process.stdout.write(code);
+

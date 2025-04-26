@@ -4,7 +4,8 @@ import {dirname, join} from 'node:path';
 import process from 'node:process';
 import {extend} from 'supertape';
 import tryCatch from 'try-catch';
-import {putoutWastTs} from '../index.js';
+import putout from 'putout';
+import * as wastTsPlugin from '../index.js';
 
 const {UPDATE} = process.env;
 
@@ -49,16 +50,22 @@ const compile = ({dir}) => (t) => (name) => {
         name,
     });
     
-    const result = putoutWastTs(fromData);
+    const {code} = putout(fromData, {
+        fix: true,
+        isTS: true,
+        plugins: [
+            ['wast-ts', wastTsPlugin],
+        ],
+    });
     
     if (UPDATE === '1') {
-        writeFileSync(to, result);
+        writeFileSync(to, code);
         return t.pass('update fixture');
     }
     
     const toData = readFileSync(to, 'utf8');
     
-    return t.equal(result, toData);
+    return t.equal(code, toData);
 };
 
 const noCompile = ({dir}) => (t) => (name) => {
@@ -69,3 +76,4 @@ const noCompile = ({dir}) => (t) => (name) => {
     
     return t.equal(result, fromData);
 };
+
