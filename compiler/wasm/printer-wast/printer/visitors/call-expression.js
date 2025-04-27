@@ -17,16 +17,15 @@ const parseArgs = (path) => {
 
 export function CallExpression(path, {indent, print, maybe, traverse}) {
     const args = parseArgs(path);
+    const n = args.length - 1;
     const isParentCall = path.parentPath.isCallExpression();
     
-    maybe.print(isParentCall, '(');
     const callee = path.get('callee');
     
+    print('(');
     traverse(callee);
     
     maybe.print.space(args.length);
-    
-    const n = args.length - 1;
     
     maybe.indent.inc(isParentCall);
     
@@ -58,6 +57,6 @@ export function CallExpression(path, {indent, print, maybe, traverse}) {
         maybe.print.breakline(n);
     }
     
-    maybe.print(isParentCall, ')');
+    print(')');
 }
 

@@ -9,3 +9,4 @@ mtools*
 *.img
 node_modules
 .idea
+*.wasm
