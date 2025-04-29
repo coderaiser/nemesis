@@ -3,7 +3,7 @@ import {create} from '#wast-ts';
 export const stack = [];
 
 export const imports = [
-    ['console', 'log', function log(message: i32) {
+    ['console', 'log', function log(i32) {
         return i32;
     }],
 ];
@@ -16,8 +16,3 @@ const {
     stack,
     imports,
 });
-
-export function x(a: i32, b: i32): i32 {
-    i32.add(local.get(a), local.get(b));
-    call('log');
-}

@@ -15,7 +15,6 @@ export function printWastImport(path, printer) {
     const {
         print,
         maybe,
-        write,
     } = printer;
     
     const [first, second, func] = path.get('arguments');

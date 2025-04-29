@@ -5,7 +5,8 @@ import process from 'node:process';
 import {extend} from 'supertape';
 import tryCatch from 'try-catch';
 import putout from 'putout';
-import * as wastTsPlugin from '../index.js';
+import * as compiler from '#compiler';
+import * as wastTsPlugin from '../putout-plugin-wast-ts/lib/index.js';
 
 const {UPDATE} = process.env;
 
@@ -72,7 +73,7 @@ const noCompile = ({dir}) => (t) => (name) => {
     const from = join(dir, 'fixture', `${name}.gs`);
     const fromData = readFileSync(from, 'utf8');
     
-    const result = putoutWastTs(fromData);
+    const result = compiler.compile(fromData);
     
     return t.equal(result, fromData);
 };

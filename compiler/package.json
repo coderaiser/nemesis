@@ -48,7 +48,10 @@
   },
   "imports": {
     "#putout-plugin-wast-ts": "./wasm/putout-plugin-wast-ts/lib/index.js",
-    "#wast-ts": "./wasm/creator.ts"
+    "#wast-ts": "./wasm/creator.ts",
+    "#compiler": "./wasm/compiler/compiler.js",
+    "#translator": "./wasm/translator/translator.js",
+    "#runner": "./wasm/runner/runner.js"
   },
   "license": "MIT",
   "engines": {

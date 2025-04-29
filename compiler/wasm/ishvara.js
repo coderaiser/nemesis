@@ -1,9 +1,8 @@
 import {readFileSync, writeFileSync} from 'node:fs';
 import process from 'node:process';
-import putout from 'putout';
-import createWabt from 'wabt';
-import * as pluginWastTS from '#putout-plugin-wast-ts';
-import {printWast} from './printer-wast/printer-wast.js';
+import {compile} from '#compiler';
+import {run} from '#runner';
+import {translate} from '#translator';
 
 const [input] = process.argv.slice(2);
 
@@ -14,32 +13,19 @@ if (!input) {
 
 const source = readFileSync(input, 'utf8');
 
-const {code: plainWastTs} = putout(source, {
-    fix: true,
-    isTS: true,
-    plugins: [
-        ['wast-ts', pluginWastTS],
-    ],
-});
-
-const wast = printWast(plainWastTs);
-const {buffer: wasm} = await wast2wasm(input, wast);
+const wast = compile(source);
+const wasm = await translate(input, wast);
 
 writeFileSync(input.replace('.wast.ts', '.wasm'), wasm);
 writeFileSync(input.replace('.wast.ts', '.wast'), wast);
 
-const mod = new WebAssembly.Module(wasm);
-const instance = new WebAssembly.Instance(mod);
+const y = run(wasm, {
+    console: {
+        log: (a) => {
+            console.log('wasm:', a);
+            return a;
+        },
+    },
+});
 
-console.log(instance.exports.x(1, 2));
-
-async function wast2wasm(name, wat) {
-    const wabt = await createWabt();
-    const parsedWat = wabt.parseWat('ishvara.wast.ts', wat);
-    
-    const wasm = parsedWat.toBinary({
-        log: false,
-    });
-    
-    return wasm;
-}
+console.log('js:', y.x(1, 2));
