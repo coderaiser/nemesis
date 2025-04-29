@@ -26,7 +26,7 @@ test('ishvara: convert-jasm-to-wast', (t) => {
 
 test('ishvara: convert-jasm-to-wast: import', (t) => {
     const source = montag`
-        __ishvara_wast_import('console', 'log', log, i32);
+        __ishvara_wast_import('console', 'log', function log(i32) {});
         export function x(a: i32, b: i32): i32 {
             i32.add(local.get(a), local.get(b));
             call('log');
@@ -50,7 +50,8 @@ test('ishvara: convert-jasm-to-wast: import', (t) => {
 
 test('ishvara: convert-jasm-to-wast: import: couple args', (t) => {
     const source = montag`
-        __ishvara_wast_import('console', 'log', log, i32, f64, f64);
+        __ishvara_wast_import('console', 'log', function log(name: i32, message: f64) {return i32});
+        
         export function x(a: i32, b: i32): i32 {
             i32.add(local.get(a), local.get(b));
             call('log');
@@ -60,7 +61,7 @@ test('ishvara: convert-jasm-to-wast: import: couple args', (t) => {
     const result = printWast(source);
     const expected = montag`
         (module
-            (import "console" "log" (func $log (param i32) (param f64) (param f64)))
+            (import "console" "log" (func $log (param $name i32) (param $message f64) (result i32)))
             (func $x (export "x") (param $a i32) (param $b i32) (result i32)
                 (i32.add (local.get $a) (local.get $b))
                 (call $log)

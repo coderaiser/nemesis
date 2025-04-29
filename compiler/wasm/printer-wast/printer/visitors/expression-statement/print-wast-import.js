@@ -11,8 +11,14 @@ export const isWastImport = (expression) => {
     return name === '__ishvara_wast_import';
 };
 
-export function printWastImport(path, {print, maybe}) {
-    const [first, second, funcName, ...funcArgs] = path.get('arguments');
+export function printWastImport(path, printer) {
+    const {
+        print,
+        maybe,
+        write,
+    } = printer;
+    
+    const [first, second, func] = path.get('arguments');
     
     print('(import ');
     
@@ -21,16 +27,54 @@ export function printWastImport(path, {print, maybe}) {
     print(second);
     print(' ');
     print('(func ');
+    
+    const {name: funcName} = func.node.id;
+    const funcArgs = func.get('params');
+    const returnType = getReturnType(func);
+    
     print(`$${funcName} `);
     
     const n = funcArgs.length - 1;
     
     for (const [i, funcArg] of funcArgs.entries()) {
-        print(`(param ${funcArg})`);
+        printParam(funcArg, printer);
         maybe.print.space(i < n);
+    }
+    
+    if (returnType) {
+        print.space();
+        print('(result ');
+        print(returnType);
+        print(')');
     }
     
     print(')');
     print(')');
+}
+
+function getReturnType(func) {
+    const [first] = func.get('body.body');
+    
+    if (!first)
+        return null;
+    
+    return first.get('argument');
+}
+
+function printParam(funcArg, {print}) {
+    const {name, typeAnnotation} = funcArg.node;
+    
+    if (!typeAnnotation) {
+        print(`(param `);
+        print(name);
+        print(`)`);
+        
+        return;
+    }
+    
+    print(`(param `);
+    print(`$${name} `);
+    print(funcArg.get('typeAnnotation.typeAnnotation'));
+    print(`)`);
 }
 
