@@ -28,11 +28,8 @@ const {buffer: wasm} = await wast2wasm(input, wast);
 writeFileSync(input.replace('.wast.ts', '.wasm'), wasm);
 writeFileSync(input.replace('.wast.ts', '.wast'), wast);
 
-console.time('x');
 const mod = new WebAssembly.Module(wasm);
 const instance = new WebAssembly.Instance(mod);
-
-console.timeEnd('x');
 
 console.log(instance.exports.x(1, 2));
 

@@ -47,7 +47,8 @@
     "try-catch": "^3.0.1"
   },
   "imports": {
-    "#putout-plugin-wast-ts": "./wasm/putout-plugin-wast-ts/lib/index.js"
+    "#putout-plugin-wast-ts": "./wasm/putout-plugin-wast-ts/lib/index.js",
+    "#wast-ts": "./wasm/creator.ts"
   },
   "license": "MIT",
   "engines": {

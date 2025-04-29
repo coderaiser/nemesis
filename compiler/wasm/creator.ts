@@ -1,13 +1,17 @@
-const isFn = (a) => typeof a === 'function';
-
-export type i32 = void;
+const isFn = (a): a is Function => typeof a === 'function';
 
 export const create = ({stack, imports}) => {
     const push = stack.push.bind(stack);
     const pop = stack.pop.bind(stack);
     
-    const i32 = createI32({push, pop});
-    const local = createLocal({push, pop});
+    const i32 = createI32({
+        push,
+        pop,
+    });
+    const local = createLocal({
+        push,
+        pop,
+    });
     const call = createCall(imports);
     
     return {
@@ -26,25 +30,26 @@ const createCall = (imports) => (name, ...args) => {
             continue;
         
         const currentFn = override || fn;
+        
         return currentFn(...args);
     }
     
     throw Error(`[call]: '${name}' not found`);
 };
 
-function createI32({push, pop}) {
-    return {
-        const: push,
-        add: createAdd({push, pop}),
-    };
-}
+const createI32 = ({push, pop}) => ({
+    const: push,
+    add: createAdd({
+        push,
+        pop,
+    }),
+});
 
-function createLocal({push, pop}) {
-    return {
-        get: push,
-    };
-}
+const createLocal = ({push, pop}) => ({
+    get: push,
+});
 
 const createAdd = ({push, pop}) => (a?: i32, b?: i32) => {
     push(pop() + pop());
 };
+

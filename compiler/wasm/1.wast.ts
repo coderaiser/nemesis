@@ -1,4 +1,4 @@
-import {create} from './creator';
+import {create} from '#wast-ts';
 
 export const stack = [];
 
@@ -15,7 +15,6 @@ const {
     imports,
 });
 
-// @ts-expect-error
 export function x(a: i32, b: i32): i32 {
     i32.add(local.get(a), local.get(b));
     call('log');

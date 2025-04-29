@@ -4,6 +4,7 @@ const {
     isStringLiteral,
     isIdentifier,
 } = types;
+
 const {isArray} = Array;
 
 const parseArgs = (path) => {
@@ -23,10 +24,10 @@ export function CallExpression(path, {indent, print, maybe, traverse}) {
     const callee = path.get('callee');
     
     print('(');
+    
     traverse(callee);
     
     maybe.print.space(args.length);
-    
     maybe.indent.inc(isParentCall);
     
     for (const [i, arg] of args.entries()) {
