@@ -11,7 +11,7 @@ export const isWastImport = (expression) => {
     return name === '__ishvara_wast_import';
 };
 
-export function printWastImport(path, {print}) {
+export function printWastImport(path, {print, maybe}) {
     const [first, second, funcName, ...funcArgs] = path.get('arguments');
     
     print('(import ');
@@ -21,12 +21,16 @@ export function printWastImport(path, {print}) {
     print(second);
     print(' ');
     print('(func ');
-    print(`$${funcName}`);
+    print(`$${funcName} `);
     
-    for (const funcArg of funcArgs) {
+    const n = funcArgs.length - 1;
+    
+    for (const [i, funcArg] of funcArgs.entries()) {
         print(`(param ${funcArg})`);
+        maybe.print.space(i < n);
     }
     
     print(')');
     print(')');
 }
+

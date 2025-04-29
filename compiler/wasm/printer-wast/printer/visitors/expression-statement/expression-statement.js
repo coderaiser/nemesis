@@ -3,13 +3,12 @@ import {
     printWastImport,
 } from './print-wast-import.js';
 
-export const ExpressionStatement = (path, {print, indent}) => {
+export const ExpressionStatement = (path, printer) => {
+    const {print, indent} = printer;
     const expression = path.get('expression');
     
     if (isWastImport(expression)) {
-        printWastImport(expression, {
-            print,
-        });
+        printWastImport(expression, printer);
         print.breakline();
         
         return;
