@@ -4,6 +4,6 @@
     "rules": {
         "nodejs/declare": "off",
         "assignment/convert-to-declaration": "off",
-        "putout": "on"
+        "putout": "off"
     }
 }

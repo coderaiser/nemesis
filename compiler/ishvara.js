@@ -19,6 +19,7 @@ esbuild.buildSync({
 
 const source = readFileSync(outfile, 'utf8');
 const jasm = convertIshvaraToJasm(source);
+
 const code = jasmToAsm(jasm);
 
 process.stdout.write(code);

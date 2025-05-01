@@ -26,6 +26,7 @@
   "dependencies": {
     "@putout/babel": "^3.2.0",
     "@putout/printer": "^14.4.0",
+    "esbuild": "^0.25.3",
     "putout": "^40.0.13",
     "wabt": "^1.0.37"
   },
@@ -36,6 +37,7 @@
     "@putout/plugin-printer": "^5.0.0",
     "@putout/test": "^13.2.3",
     "c8": "^10.0.0",
+    "es-arraybuffer-base64": "^1.1.2",
     "eslint": "^9.0.0",
     "eslint-plugin-n": "^17.0.0",
     "eslint-plugin-putout": "^26.1.0",
