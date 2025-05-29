@@ -75,8 +75,15 @@ if which node
 #compile
 echo '> compile boot.asm'
 $fasm boot.asm
+return_value=$?
+
+if [ $return_value != 0 ]; then
+    exit $return_value
+fi
+
 echo '> compile kernel'
 $fasm kernel/kernel.asm
+
 echo '> compile shell'
 $fasm shell/sh3ll.asm
 echo '----------------------------------'
