@@ -5,6 +5,7 @@ fasm*
 mtools*
 
 *.bin
+*.swp
 
 *.img
 node_modules

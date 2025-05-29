@@ -9,9 +9,8 @@
     "url": "git://github.com/coderaiser/nemesis.git"
   },
   "scripts": {
-    "test": "npm run make",
-    "make": "sh ./scripts/make",
-    "clean": "sh ./scripts/clean"
+    "build": "sh ./scripts/build.sh",
+    "clean": "sh ./scripts/clean.sh"
   },
   "subdomain": "nemesis",
   "devDependencies": {
