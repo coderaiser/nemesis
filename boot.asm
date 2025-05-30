@@ -141,10 +141,11 @@ sec_reading2:
     div    cx
                     ;в ax номер дорожки
                     ;в dx номер сектора на дорожке
-    or    dl,dl
-    jnz    not_sec1
+    ; never used
+    ; or    dl,dl
+    ; jnz    not_sec1
 
-not_sec1:
+;not_sec1:
     inc    dl
     mov    cl,dl            ;номер сектора
     mov    dx,ax            ;смотрим парная ли дорожка
