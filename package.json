@@ -12,8 +12,5 @@
     "start": "app.js"
   },
   "subdomain": "nemesis",
-  "dependencies": {
-    "cloudcmd": "0.3.0"
-  },
   "main": "app.js"
 }
