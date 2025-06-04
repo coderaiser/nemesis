@@ -33,7 +33,7 @@ var $;
                 var emu = new Jemul8( {
                       'floppy0.driveType'   : 'FDD_350HD',
                       'floppy0.diskType'    : 'FLOPPY_1_44',
-                      'floppy0.path'        : 'nemizida_small.img',
+                      'floppy0.path'        : 'nemesis-small.img',
                       'floppy0.status'      : true
                 } );
                   
