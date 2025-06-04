@@ -1,2 +1,0 @@
-mov(ax, 0xb800);
-mov(ax, 0x3);

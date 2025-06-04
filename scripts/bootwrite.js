@@ -1,40 +1,31 @@
-(function(){
-    'use strict';
-    
-    var fs          = require('fs'),
-        
-        BOOT_FILE   = 'boot.bin',
-        IMAGE_FILE  = 'nemizida.img',
-        
-        SUCCESS_MSG = 'Boot Record writed successfully.',
-        
-        OFFSET      = 0,
-        POSITION    = 0;
-    
-    
-    fs.readFile(BOOT_FILE, function(error, data) {
-        if (error)
-            show(error);
-        else
-            fs.open(IMAGE_FILE, 'r+', function(error, fd) {
-                if (error)
-                    show(error);
-                else
-                    write(fd, data);
-            });
-    });
-    
-    function write(fd, data){
-        fs.write(fd, data, OFFSET, data.length, POSITION, function(error) {
-            show(error || SUCCESS_MSG);
-        });
-    }
-    
-    function show(pMsg){
-        if(pMsg)
-            console.log(pMsg);
-        
-        return pMsg;
-    }
-    
-})();
+import process from 'node:process';
+import {open, readFile} from 'node:fs/promises';
+import tryToCatch from 'try-to-catch';
+
+const BOOT_FILE = 'boot.bin';
+const IMAGE_FILE = 'nemesis.img';
+const SUCCESS_MSG = 'Boot Record writed successfully.';
+const OFFSET = 0;
+const POSITION = 0;
+
+const [error, data] = await tryToCatch(readFile, BOOT_FILE);
+
+if (error) {
+    console.error(error);
+    process.exit(1);
+}
+
+const [errorOpen, fileHandle] = await tryToCatch(open, IMAGE_FILE, 'r+');
+
+if (errorOpen) {
+    console.error(errorOpen);
+    process.exit(1);
+}
+
+const [errorWrite] = await tryToCatch(fileHandle.write.bind(fileHandle), data, OFFSET, data.length, POSITION);
+if (errorWrite) {
+    console.error(errorWrite);
+    process.exit(1);
+}
+
+console.log(SUCCESS_MSG);

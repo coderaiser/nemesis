@@ -1,6 +1,7 @@
 {
   "name": "nemesis",
   "version": "0.2.0",
+  "type": "module",
   "author": "coderaiser <mnemonic.enemy@gmail.com> (https://github.com/coderaiser)",
   "description": "OS",
   "homepage": "https://github.com/coderaiser/nemesis",
@@ -19,6 +20,7 @@
     "eslint": "^9.9.1",
     "eslint-plugin-putout": "^26.1.0",
     "putout": "^40.0.14",
-    "supertape": "^11.1.0"
+    "supertape": "^11.1.0",
+    "try-to-catch": "^3.0.1"
   }
 }

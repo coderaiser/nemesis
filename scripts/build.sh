@@ -88,19 +88,19 @@ echo '> compile shell'
 $fasm shell/sh3ll.asm
 echo '----------------------------------'
 #making floppy image
-dd if=/dev/zero of=nemizida.img bs=512 count=2880
-$mkdosfs nemizida.img
+dd if=/dev/zero of=nemesis.img bs=512 count=2880
+$mkdosfs nemesis.img
 
 # write kernel and shell
-$mcopy -i nemizida.img kernel/kernel.bin ::/ 
-$mcopy -i nemizida.img shell/sh3ll.bin ::/ 
+$mcopy -i nemesis.img kernel/kernel.bin ::/ 
+$mcopy -i nemesis.img shell/sh3ll.bin ::/ 
 echo '----------------------------------'
 # write boot record
 $node ./scripts/bootwrite.js
 
-dd if=nemizida.img of=nemizida_small.img bs=512 count=40
+dd if=nemesis.img of=nemesis-small.img bs=512 count=40
 
 # check result image
-$dosfsck nemizida.img
+$dosfsck nemesis.img
 
-echo "Image \"nemizida.img\" created."
+echo "Image \"nemesis.img\" created."

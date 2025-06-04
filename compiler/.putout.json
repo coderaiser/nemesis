@@ -1,9 +1,0 @@
-{
-    "printer": "putout",
-    "plugins": ["printer"],
-    "rules": {
-        "nodejs/declare": "off",
-        "assignment/convert-to-declaration": "off",
-        "putout": "off"
-    }
-}
