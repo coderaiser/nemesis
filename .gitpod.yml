@@ -1,2 +1,2 @@
 tasks:
-  - init: ./scripts/make.sh
+  - init: ./scripts/build.sh
