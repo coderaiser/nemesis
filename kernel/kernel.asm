@@ -161,39 +161,6 @@ reboot: ;0 перезагрузка
     dw 0FFFFh
     iret
 
-
-
-
-scrol:
-    push    ds
-    push    es
-    push    si
-    push    di
-    push    cx
-
-    mov    ax,0xb800
-    mov    ds,ax
-    mov    es,ax
-    mov    si,80*2
-    xor    di,di
-    mov    cx,80*24*2
-    rep    movsb
-
-    xor    ax,ax
-
-    mov    ds,ax
-    mov    ah,[bgcolor]
-    shl    ah,4
-    add    ah,[textcolor]
-    mov    cx,80;*24*2
-    rep    stosw
-
-    pop    cx
-    pop    di
-    pop    si
-    pop    es
-    pop    ds
-    ret
 ;---------------------------------------------
 
 ;---------------------------------------------

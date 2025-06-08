@@ -31,7 +31,7 @@ print:
 	cmp	[line],25
 	jl	_nopoint2write
 
-	call	scrol
+	call	scroll
 
 	dec	[line]
 	jmp	_nopoint2write
@@ -84,3 +84,25 @@ end_of_printf:
 	pop	bx
 	pop	es
 	iret
+
+scroll:
+    pusha
+    mov    ax,0xb800
+    mov    ds,ax
+    mov    es,ax
+    mov    si,80*2
+    xor    di,di
+    mov    cx,80*24*2
+    rep    movsb
+
+    xor    ax,ax
+
+    mov    ds,ax
+    mov    ah,[bgcolor]
+    shl    ah,4
+    add    ah,[textcolor]
+    mov    cx,80;*24*2
+    rep    stosw
+
+    popa
+    ret
