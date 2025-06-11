@@ -6,9 +6,9 @@ printf: ;2 в bx должен быть адрес ascii строки
 	mov	ax,0xb800
 	mov	es,ax
 
-
-	mov	si,bx
-	call	get_size
+    push bx
+    call getStringLength
+    mov si, bx
 
 	mov	al,_setcursor
 	mov	bl,[col]
@@ -66,17 +66,21 @@ _nopoint2write:
 	loop	print
 	jmp	end_of_printf
 
-get_size:
-	push	si
-	xor	cx,cx
-get_size_loop:
-	lodsb
-	inc	cx
-	or	al,al
-	jnz	get_size_loop
-	dec	cx
-	pop	si
-	ret
+getStringLength:
+    pop ax
+    pop si
+    push ax
+    mov cx, -1
+    cld
+
+doWhile:
+    lodsb
+    inc cx
+    test al, al
+    jnz doWhile
+    mov ax, cx
+    ret
+
 
 end_of_printf:
 	pop	di
