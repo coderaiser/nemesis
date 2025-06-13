@@ -10,15 +10,18 @@
     "url": "git://github.com/coderaiser/nemesis.git"
   },
   "scripts": {
-    "build": "sh ./scripts/build.sh",
-    "clean": "sh ./scripts/clean.sh"
+    "build": "madrun build",
+    "clean": "madrun clean",
+    "start": "madrun start"
   },
   "subdomain": "nemesis",
   "devDependencies": {
-    "@putout/plugin-printer": "^5.0.0",
     "@putout/printer": "^14.5.1",
+    "cloudcmd": "^18.5.2",
     "eslint": "^9.9.1",
-    "eslint-plugin-putout": "^26.1.0",
+    "eslint-plugin-putout": "^27.1.0",
+    "gritty": "^8.1.2",
+    "madrun": "^11.0.2",
     "putout": "^40.0.14",
     "supertape": "^11.1.0",
     "try-to-catch": "^3.0.1"
