@@ -83,6 +83,11 @@ fi
 
 echo '> compile kernel'
 $fasm kernel/kernel.asm
+return_value=$?
+
+if [ $return_value != 0 ]; then
+    exit $return_value
+fi
 
 echo '> compile shell'
 $fasm shell/sh3ll.asm
