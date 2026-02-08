@@ -17,7 +17,7 @@
   "subdomain": "nemesis",
   "devDependencies": {
     "@putout/printer": "^14.5.1",
-    "cloudcmd": "^18.5.2",
+    "cloudcmd": "^19.3.4",
     "eslint": "^9.9.1",
     "eslint-plugin-putout": "^27.1.0",
     "gritty": "^8.1.2",
